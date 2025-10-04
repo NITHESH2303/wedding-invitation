@@ -463,50 +463,67 @@ export default function HomePage() {
           <ScrollReveal direction="up" className="text-center mb-8">
             {/* Desktop: Single line */}
             <div className="hidden md:block">
-              <StaggeredText
-                text="THE BIG DAYS"
-                className="text-5xl md:text-6xl font-extrabold text-navy-800 mb-8 tracking-widest-em uppercase"
-                direction="up"
-              />
+              <div className="flex items-center justify-center gap-4 mb-8">
+                <DoodleStar className="w-8 h-8 text-yellow-400" />
+                <StaggeredText
+                  text="THE BIG DAYS"
+                  className="text-5xl md:text-6xl font-handwritten text-navy-800 mb-8 tracking-widest-em uppercase transform -rotate-1"
+                  direction="up"
+                />
+                <DoodleStar className="w-8 h-8 text-yellow-400" />
+              </div>
             </div>
             
             {/* Mobile: Two lines */}
             <div className="block md:hidden text-center mb-8">
-              <StaggeredText
-                text="THE BIG"
-                className="text-4xl font-extrabold text-navy-800 tracking-widest-em uppercase block"
-                direction="up"
-              />
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <DoodleStar className="w-6 h-6 text-yellow-400" />
+                <StaggeredText
+                  text="THE BIG"
+                  className="text-4xl font-handwritten text-navy-800 tracking-widest-em uppercase block transform -rotate-1"
+                  direction="up"
+                />
+                <DoodleStar className="w-6 h-6 text-yellow-400" />
+              </div>
               <StaggeredText
                 text="DAYS"
-                className="text-4xl font-extrabold text-navy-800 tracking-widest-em uppercase block mt-2"
+                className="text-4xl font-handwritten text-navy-800 tracking-widest-em uppercase block transform rotate-1"
                 direction="up"
               />
             </div>
-            <motion.p
-              className="text-xl md:text-2xl text-navy-600 font-medium leading-emotional"
+            <motion.div
+              className="text-center"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
-            Mark your calendars - it&apos;s going to be legendary!
-            </motion.p>
+              <p className="text-xl md:text-2xl text-navy-600 font-script leading-emotional mb-4">
+                &ldquo;Mark your calendars - it&apos;s going to be legendary!&rdquo;
+              </p>
+              <div className="flex items-center justify-center gap-2">
+                <DoodleHeart className="w-5 h-5 text-pink-400" />
+                <DoodleStar className="w-5 h-5 text-yellow-400" />
+                <DoodleFlower className="w-5 h-5 text-pink-300" />
+              </div>
+            </motion.div>
           </ScrollReveal>
 
           <div className="grid lg:grid-cols-2 gap-8">
             <motion.div
-              className="bg-gradient-to-r from-peach-200 to-blush-100 rounded-2xl p-6 shadow-xl max-w-md mx-auto"
+              className="max-w-md mx-auto"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              style={{ boxShadow: '0 20px 40px rgba(0,0,0,0.08)' }}
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
             >
-              <div className="text-center">
-                <h3 className="text-2xl md:text-3xl font-extrabold text-navy-800 mb-4 tracking-widest-em uppercase">
-                  THE RECEPTION
-                </h3>
+              <DoodleFrame className="bg-gradient-to-r from-peach-200 to-blush-100 rounded-2xl p-6 shadow-xl">
+                <div className="text-center">
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <DoodleStar className="w-6 h-6 text-yellow-500" />
+                  <h3 className="text-2xl md:text-3xl font-doodle text-navy-800 tracking-widest-em uppercase transform -rotate-1">
+                    THE RECEPTION
+                  </h3>
+                  <DoodleStar className="w-6 h-6 text-yellow-500" />
+              </div>
               <div className="space-y-4 mb-6">
                 <div>
                     <p className="font-bold text-lg text-navy-700">November 22nd, 2025</p>
@@ -529,21 +546,24 @@ export default function HomePage() {
                   </p>
                 </div>
               </div>
+              </DoodleFrame>
             </motion.div>
 
             <motion.div
-              className="bg-gradient-to-r from-dusty-200 to-gentle-200 rounded-2xl p-6 shadow-xl max-w-md mx-auto"
+              className="max-w-md mx-auto"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              style={{ boxShadow: '0 20px 40px rgba(0,0,0,0.08)' }}
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
             >
+              <DoodleFrame className="bg-gradient-to-r from-dusty-200 to-gentle-200 rounded-2xl p-6 shadow-xl">
               <div className="text-center">
-                <h3 className="text-2xl md:text-3xl font-extrabold text-navy-800 mb-4 tracking-widest-em uppercase">
-                  THE WEDDING
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <DoodleFlower className="w-6 h-6 text-pink-400" />
+                  <h3 className="text-2xl md:text-3xl font-doodle text-navy-800 tracking-widest-em uppercase transform rotate-1">
+                    THE WEDDING
                 </h3>
+                  <DoodleFlower className="w-6 h-6 text-pink-400" />
+              </div>
               <div className="space-y-4 mb-6">
                 <div>
                     <p className="font-bold text-lg text-navy-700">November 23rd, 2025</p>
@@ -566,6 +586,7 @@ export default function HomePage() {
                   </p>
                 </div>
               </div>
+              </DoodleFrame>
             </motion.div>
           </div>
         </div>
@@ -588,23 +609,31 @@ export default function HomePage() {
           <ScrollReveal direction="up" className="text-center mb-8">
             {/* Desktop: Single line */}
             <div className="hidden md:block">
-              <StaggeredText
-                text="DYNAMIC DUO"
-                className="text-5xl md:text-6xl font-extrabold text-navy-800 mb-8 tracking-widest-em uppercase"
-                direction="up"
-              />
+              <div className="flex items-center justify-center gap-4 mb-8">
+                <DoodleHeart className="w-8 h-8 text-pink-400" />
+                <StaggeredText
+                  text="DYNAMIC DUO"
+                  className="text-5xl md:text-6xl font-handwritten text-navy-800 mb-8 tracking-widest-em uppercase transform -rotate-1"
+                  direction="up"
+                />
+                <DoodleHeart className="w-8 h-8 text-pink-400" />
+              </div>
             </div>
             
             {/* Mobile: Two lines */}
             <div className="block md:hidden text-center mb-8">
-              <StaggeredText
-                text="DYNAMIC"
-                className="text-4xl font-extrabold text-navy-800 tracking-widest-em uppercase block"
-                direction="up"
-              />
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <DoodleHeart className="w-6 h-6 text-pink-400" />
+                <StaggeredText
+                  text="DYNAMIC"
+                  className="text-4xl font-handwritten text-navy-800 tracking-widest-em uppercase block transform -rotate-1"
+                  direction="up"
+                />
+                <DoodleHeart className="w-6 h-6 text-pink-400" />
+              </div>
               <StaggeredText
                 text="DUO"
-                className="text-4xl font-extrabold text-navy-800 tracking-widest-em uppercase block mt-2"
+                className="text-4xl font-handwritten text-navy-800 tracking-widest-em uppercase block transform rotate-1"
                 direction="up"
               />
             </div>
@@ -614,12 +643,12 @@ export default function HomePage() {
             {/* Boobana Card - Smaller */}
             <ScrollReveal direction="left" delay={0.2}>
               <motion.div
-                className="bg-gradient-to-r from-peach-200 to-blush-100 rounded-2xl p-6 shadow-xl max-w-md mx-auto"
+                className="max-w-md mx-auto"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                style={{ boxShadow: '0 20px 40px rgba(0,0,0,0.08)' }}
               >
+                <DoodleFrame className="bg-gradient-to-r from-peach-200 to-blush-100 rounded-2xl p-6 shadow-xl">
             <div className="text-center">
                   <div 
                     className="art-placeholder rounded-full mx-auto mb-6 bg-gradient-to-r from-gentle-200 to-mint-200 shadow-lg flex items-center justify-center text-lg font-bold w-20 h-20 text-3xl"
@@ -627,9 +656,13 @@ export default function HomePage() {
                   >
                     👰‍♀️
               </div>
-                  <h3 className="text-2xl md:text-3xl font-extrabold text-navy-800 mb-4 tracking-widest-em uppercase">
-                    BOOBANA
-                  </h3>
+                  <div className="flex items-center justify-center gap-2 mb-4">
+                    <DoodleFlower className="w-6 h-6 text-pink-400" />
+                    <h3 className="text-2xl md:text-3xl font-doodle text-navy-800 tracking-widest-em uppercase transform -rotate-1">
+                      BOOBANA
+                    </h3>
+                    <DoodleFlower className="w-6 h-6 text-pink-400" />
+                  </div>
                   <div className="bg-white/50 p-4 rounded-xl">
                     <p className="text-navy-700 leading-emotional text-base font-medium">
                       The sunshine of the story — the one who plans everything,
@@ -638,18 +671,19 @@ export default function HomePage() {
                 </p>
               </div>
             </div>
+              </DoodleFrame>
               </motion.div>
             </ScrollReveal>
 
             {/* Giri Card - Smaller */}
             <ScrollReveal direction="right" delay={0.4}>
               <motion.div
-                className="bg-gradient-to-r from-dusty-200 to-gentle-200 rounded-2xl p-6 shadow-xl max-w-md mx-auto"
+                className="max-w-md mx-auto"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                style={{ boxShadow: '0 20px 40px rgba(0,0,0,0.08)' }}
               >
+                <DoodleFrame className="bg-gradient-to-r from-dusty-200 to-gentle-200 rounded-2xl p-6 shadow-xl">
             <div className="text-center">
                   <div 
                     className="art-placeholder rounded-full mx-auto mb-6 bg-gradient-to-r from-gentle-200 to-mint-200 shadow-lg flex items-center justify-center text-lg font-bold w-20 h-20 text-3xl"
@@ -657,9 +691,13 @@ export default function HomePage() {
                   >
                     🤵‍♂️
               </div>
-                  <h3 className="text-2xl md:text-3xl font-extrabold text-navy-800 mb-4 tracking-widest-em uppercase">
-                    GIRI
-                  </h3>
+                  <div className="flex items-center justify-center gap-2 mb-4">
+                    <DoodleStar className="w-6 h-6 text-yellow-500" />
+                    <h3 className="text-2xl md:text-3xl font-doodle text-navy-800 tracking-widest-em uppercase transform rotate-1">
+                      GIRI
+                    </h3>
+                    <DoodleStar className="w-6 h-6 text-yellow-500" />
+                  </div>
                   <div className="bg-white/50 p-4 rounded-xl">
                     <p className="text-navy-700 leading-emotional text-base font-medium">
                       The calm in the storm — a problem solver, a dream chaser,
@@ -669,6 +707,7 @@ export default function HomePage() {
                 </p>
               </div>
             </div>
+              </DoodleFrame>
               </motion.div>
             </ScrollReveal>
           </div>
@@ -712,42 +751,62 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto px-8 py-8">
           <ScrollReveal direction="up" className="text-center mb-8">
             <div className="hidden md:block">
-              <StaggeredText
-                text="JOIN THE PARTY"
-                className="text-5xl md:text-6xl font-extrabold text-navy-800 mb-8 tracking-widest-em uppercase"
-                direction="up"
-              />
+              <div className="flex items-center justify-center gap-4 mb-8">
+                <DoodleFlower className="w-8 h-8 text-pink-400" />
+                <StaggeredText
+                  text="JOIN THE PARTY"
+                  className="text-5xl md:text-6xl font-handwritten text-navy-800 mb-8 tracking-widest-em uppercase transform -rotate-1"
+                  direction="up"
+                />
+                <DoodleFlower className="w-8 h-8 text-pink-400" />
+              </div>
             </div>
 
             <div className="block md:hidden text-center mb-8">
-              <StaggeredText
-                text="JOIN THE"
-                className="text-4xl font-extrabold text-navy-800 tracking-widest-em uppercase block"
-                direction="up"
-              />
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <DoodleFlower className="w-6 h-6 text-pink-400" />
+                <StaggeredText
+                  text="JOIN THE"
+                  className="text-4xl font-handwritten text-navy-800 tracking-widest-em uppercase block transform -rotate-1"
+                  direction="up"
+                />
+                <DoodleFlower className="w-6 h-6 text-pink-400" />
+              </div>
               <StaggeredText
                 text="PARTY"
-                className="text-4xl font-extrabold text-navy-800 tracking-widest-em uppercase block mt-2"
+                className="text-4xl font-handwritten text-navy-800 tracking-widest-em uppercase block transform rotate-1"
                 direction="up"
               />
             </div>
-            <motion.p
-              className="text-xl md:text-2xl text-navy-600 font-medium leading-emotional mb-8"
+            <motion.div
+              className="text-center mb-8"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
-              We can&apos;t wait to celebrate together! Please let us know you&apos;re coming so we can prepare the perfect celebration for you.
-            </motion.p>
+              <p className="text-xl md:text-2xl text-navy-600 font-script leading-emotional mb-4">
+                &ldquo;We can&apos;t wait to celebrate together!&rdquo;
+              </p>
+              <p className="text-lg md:text-xl text-navy-500 font-medium leading-emotional">
+                Please let us know you&apos;re coming so we can prepare the perfect celebration for you.
+              </p>
+              <div className="flex items-center justify-center gap-2 mt-4">
+                <DoodleHeart className="w-5 h-5 text-pink-400" />
+                <DoodleStar className="w-5 h-5 text-yellow-400" />
+                <DoodleFlower className="w-5 h-5 text-pink-300" />
+              </div>
+            </motion.div>
             <motion.div
-              className="bg-gradient-to-r from-mint-100 to-gentle-100 rounded-2xl p-6 max-w-2xl mx-auto"
+              className="max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
             >
-              <p className="text-lg text-navy-700 font-medium leading-emotional">
-                💕 We can&apos;t wait to celebrate together! 💕
-              </p>
+              <DoodleFrame className="bg-gradient-to-r from-mint-100 to-gentle-100 rounded-2xl p-6">
+                <p className="text-lg text-navy-700 font-medium leading-emotional">
+                  💕 We can&apos;t wait to celebrate together! 💕
+                </p>
+              </DoodleFrame>
             </motion.div>
           </ScrollReveal>
 
@@ -923,17 +982,26 @@ export default function HomePage() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              <StaggeredText
-                text="SEE YOU THERE!"
-                className="text-lg md:text-xl font-extrabold text-white tracking-widest-em uppercase mb-2"
-                direction="up"
-              />
-              <p className="text-white/80 text-sm font-medium leading-emotional mb-1">
-                Made with ❤️ for our special day
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <DoodleHeart className="w-5 h-5 text-pink-300" />
+                <StaggeredText
+                  text="SEE YOU THERE!"
+                  className="text-lg md:text-xl font-handwritten text-white tracking-widest-em uppercase transform -rotate-1"
+                  direction="up"
+                />
+                <DoodleHeart className="w-5 h-5 text-pink-300" />
+              </div>
+              <p className="text-white/80 text-sm font-script leading-emotional mb-1">
+                &ldquo;Made with ❤️ for our special day&rdquo;
               </p>
-              <p className="text-white/60 text-xs leading-emotional">
+              <p className="text-white/60 text-xs font-medium leading-emotional">
                 With love from Boobana & Giri
               </p>
+              <div className="flex items-center justify-center gap-1 mt-2">
+                <DoodleStar className="w-3 h-3 text-yellow-300" />
+                <DoodleFlower className="w-3 h-3 text-pink-300" />
+                <DoodleHeart className="w-3 h-3 text-pink-300" />
+              </div>
             </motion.div>
           </div>
         </div>
