@@ -264,6 +264,7 @@ export default function HomePage() {
                 text="BOOBANA & GIRI"
                 className="text-7xl md:text-8xl lg:text-9xl font-handwritten text-navy-800 tracking-widest-em uppercase text-center mb-16 transform -rotate-1"
                 direction="up"
+                triggerOnLoad={true}
               />
             </div>
 
@@ -272,16 +273,19 @@ export default function HomePage() {
                 text="BOOBANA"
                 className="text-5xl font-handwritten text-navy-800 tracking-widest-em uppercase block transform -rotate-1"
                 direction="up"
+                triggerOnLoad={true}
               />
               <StaggeredText
                 text="&"
                 className="text-4xl font-script text-navy-800 tracking-widest-em uppercase block my-2 transform rotate-1"
                 direction="up"
+                triggerOnLoad={true}
               />
               <StaggeredText
                 text="GIRI"
                 className="text-5xl font-handwritten text-navy-800 tracking-widest-em uppercase block transform rotate-1"
                 direction="up"
+                triggerOnLoad={true}
               />
             </div>
             <motion.div
@@ -386,7 +390,7 @@ export default function HomePage() {
         <FloatingDoodles />
         
         <div className="max-w-7xl mx-auto px-8 py-8">
-          <ScrollReveal direction="up" className="text-center mb-16">
+          <ScrollReveal direction="up" className="text-center mb-16" once={false}>
             {/* Desktop: Single line */}
             <div className="hidden md:block">
               <div className="flex items-center justify-center gap-4 mb-8">
@@ -395,6 +399,7 @@ export default function HomePage() {
                   text="OUR LOVE STORY"
                   className="text-5xl md:text-6xl font-handwritten text-navy-800 tracking-widest-em uppercase transform -rotate-1"
                   direction="up"
+                  once={false}
                 />
                 <DoodleHeart className="w-8 h-8 text-pink-400" />
             </div>
@@ -408,6 +413,7 @@ export default function HomePage() {
                   text="OUR LOVE"
                   className="text-4xl font-handwritten text-navy-800 tracking-widest-em uppercase block transform -rotate-1"
                   direction="up"
+                  once={false}
                 />
                 <DoodleHeart className="w-6 h-6 text-pink-400" />
               </div>
@@ -415,6 +421,7 @@ export default function HomePage() {
                 text="STORY"
                 className="text-4xl font-handwritten text-navy-800 tracking-widest-em uppercase block transform rotate-1"
                 direction="up"
+                once={false}
               />
             </div>
             <motion.p
@@ -527,7 +534,7 @@ export default function HomePage() {
                   <DoodleStar className="w-6 h-6 text-yellow-500" />
                   <h3 className="text-2xl md:text-3xl font-doodle text-navy-800 tracking-widest-em uppercase transform -rotate-1">
                     THE RECEPTION
-                  </h3>
+                </h3>
                   <DoodleStar className="w-6 h-6 text-yellow-500" />
               </div>
               <div className="space-y-4 mb-6">
@@ -806,7 +813,7 @@ export default function HomePage() {
                 <DoodleHeart className="w-5 h-5 text-pink-400" />
                 <DoodleStar className="w-5 h-5 text-yellow-400" />
                 <DoodleFlower className="w-5 h-5 text-pink-300" />
-              </div>
+          </div>
             </motion.div>
             <motion.div
               className="max-w-2xl mx-auto"

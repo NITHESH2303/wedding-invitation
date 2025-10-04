@@ -9,6 +9,8 @@ interface StaggeredTextProps {
   className?: string;
   variant?: 'heading' | 'subheading';
   direction?: "up" | "down" | "left" | "right";
+  triggerOnLoad?: boolean; // New prop to trigger animation on load instead of scroll
+  once?: boolean; // New prop to control if animation happens once or every time
 }
 
 const containerVariants: Variants = {
@@ -39,7 +41,9 @@ export default function StaggeredText({
   text, 
   variant = 'subheading',
   className = "",
-  direction = "up"
+  direction = "up",
+  triggerOnLoad = false,
+  once = true
 }: StaggeredTextProps) {
   const [isMounted, setIsMounted] = useState(false);
 
@@ -67,8 +71,7 @@ export default function StaggeredText({
       className={`overflow-hidden ${className || textClasses}`}
       variants={containerVariants}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      {...(triggerOnLoad ? { animate: "visible" } : { whileInView: "visible", viewport: { once, amount: 0.3 } })}
     >
       {text.split("").map((char, charIndex) => {
         return (
