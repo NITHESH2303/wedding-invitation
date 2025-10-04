@@ -6,7 +6,8 @@ import Timer from "@/components/countdown";
 import StaggeredText from "@/components/StaggeredText";
 import ScrollReveal from "@/components/ScrollReveal";
 import AnimatedTimeline from "@/components/AnimatedTimeline";
-import { DoodleHeart, DoodleStar, DoodleFlower, DoodleArrow, DoodleFrame, FloatingDoodles } from "@/components/DoodleArt";
+import { DoodleHeart, DoodleStar, DoodleFlower, DoodleFrame, FloatingDoodles } from "@/components/DoodleArt";
+import { DoodleBorder, DoodleArrow as RoughArrow, DoodleSwirl, DoodleHighlight } from "@/components/DoodleAPI";
 
 export default function HomePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -259,7 +260,15 @@ export default function HomePage() {
             transition={{ duration: 1, delay: 0.5 }}
             className="mb-20"
           >
-            <div className="hidden md:block">
+            <div className="hidden md:block relative">
+              <DoodleBorder 
+                width={800} 
+                height={120} 
+                color="#f59e0b" 
+                strokeWidth={3}
+                className="absolute inset-0 -z-10"
+                delay={0.5}
+              />
               <StaggeredText
                 text="BOOBANA & GIRI"
                 className="text-7xl md:text-8xl lg:text-9xl font-handwritten text-navy-800 tracking-widest-em uppercase text-center mb-16 transform -rotate-1"
@@ -289,11 +298,19 @@ export default function HomePage() {
               />
             </div>
             <motion.div
-              className="flex items-center justify-center gap-4 mb-8"
+              className="flex items-center justify-center gap-4 mb-8 relative"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
             >
+              <DoodleHighlight 
+                width={600} 
+                height={60} 
+                color="#fbbf24" 
+                strokeWidth={4}
+                className="absolute inset-0 -z-10"
+                delay={1.0}
+              />
               <DoodleHeart className="w-8 h-8 text-pink-400" />
               <p className="text-4xl md:text-5xl font-doodle text-navy-700 tracking-wide-em transform rotate-1">
                 WEDDING CELEBRATION
@@ -351,7 +368,13 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.1 }}
           >
-            <DoodleArrow className="w-12 h-6 text-mint-400" />
+            <RoughArrow 
+              width={60} 
+              height={30} 
+              color="#86efac" 
+              strokeWidth={3}
+              delay={1.3}
+            />
             <motion.a
               href="#story"
               className="inline-block bg-gradient-to-r from-mint-300 to-gentle-300 text-navy-800 px-12 py-4 rounded-full text-xl font-handwritten uppercase tracking-widest-em transition-all duration-300 shadow-lg hover:shadow-xl transform -rotate-1"
@@ -365,7 +388,14 @@ export default function HomePage() {
             >
               DISCOVER OUR STORY
             </motion.a>
-            <DoodleArrow className="w-12 h-6 text-mint-400 scale-x-[-1]" />
+            <RoughArrow 
+              width={60} 
+              height={30} 
+              color="#86efac" 
+              strokeWidth={3}
+              delay={1.3}
+              className="scale-x-[-1]"
+            />
           </motion.div>
             </div>
       </section>
@@ -393,7 +423,15 @@ export default function HomePage() {
           <ScrollReveal direction="up" className="text-center mb-16" once={false}>
             {/* Desktop: Single line */}
             <div className="hidden md:block">
-              <div className="flex items-center justify-center gap-4 mb-8">
+              <div className="flex items-center justify-center gap-4 mb-8 relative">
+                <DoodleBorder 
+                  width={700} 
+                  height={80} 
+                  color="#fb7185" 
+                  strokeWidth={2}
+                  className="absolute inset-0 -z-10"
+                  delay={0.3}
+                />
                 <DoodleHeart className="w-8 h-8 text-pink-400" />
                 <StaggeredText
                   text="OUR LOVE STORY"
@@ -402,7 +440,7 @@ export default function HomePage() {
                   once={false}
                 />
                 <DoodleHeart className="w-8 h-8 text-pink-400" />
-            </div>
+              </div>
             </div>
             
             {/* Mobile: Two lines */}
@@ -526,11 +564,19 @@ export default function HomePage() {
 
           <div className="grid lg:grid-cols-2 gap-8">
             <motion.div
-              className="max-w-md mx-auto"
+              className="max-w-md mx-auto relative"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
+              <DoodleSwirl 
+                width={80} 
+                height={80} 
+                color="#fbbf24" 
+                strokeWidth={2}
+                className="absolute -top-4 -right-4 -z-10"
+                delay={0.5}
+              />
               <DoodleFrame className="bg-gradient-to-r from-peach-200 to-blush-100 rounded-2xl p-6 shadow-xl">
                 <div className="text-center">
                 <div className="flex items-center justify-center gap-2 mb-4">
@@ -566,11 +612,19 @@ export default function HomePage() {
             </motion.div>
 
             <motion.div
-              className="max-w-md mx-auto"
+              className="max-w-md mx-auto relative"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
+              <DoodleSwirl 
+                width={80} 
+                height={80} 
+                color="#d8b4fe" 
+                strokeWidth={2}
+                className="absolute -top-4 -left-4 -z-10"
+                delay={0.7}
+              />
               <DoodleFrame className="bg-gradient-to-r from-dusty-200 to-gentle-200 rounded-2xl p-6 shadow-xl">
               <div className="text-center">
                 <div className="flex items-center justify-center gap-2 mb-4">
