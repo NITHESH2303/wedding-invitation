@@ -13,12 +13,55 @@ interface TimelineItem {
 }
 
 interface AnimatedTimelineProps {
-  items: TimelineItem[];
+  items?: TimelineItem[];
   className?: string;
 }
 
+const defaultTimelineItems: TimelineItem[] = [
+  {
+    id: 1,
+    title: "First Meeting",
+    description: "We first met at a mutual friend's party. It was love at first sight, though we were both too shy to admit it at the time. The connection was instant and undeniable.",
+    date: "2020",
+    icon: "💕",
+    color: "from-pink-200 to-rose-200"
+  },
+  {
+    id: 2,
+    title: "First Date",
+    description: "Our first official date was at a cozy coffee shop. We talked for hours, and it felt like we had known each other forever. That's when we both knew this was something special.",
+    date: "2020",
+    icon: "☕",
+    color: "from-amber-200 to-yellow-200"
+  },
+  {
+    id: 3,
+    title: "Moving In Together",
+    description: "After months of dating, we decided to take the next big step and move in together. It was the best decision we ever made, and our love grew stronger every day.",
+    date: "2021",
+    icon: "🏠",
+    color: "from-blue-200 to-indigo-200"
+  },
+  {
+    id: 4,
+    title: "The Proposal",
+    description: "On a beautiful evening, under the stars, Giri got down on one knee and asked the most important question of our lives. Of course, I said yes! It was the happiest moment of our lives.",
+    date: "2024",
+    icon: "💍",
+    color: "from-purple-200 to-pink-200"
+  },
+  {
+    id: 5,
+    title: "The Wedding",
+    description: "Now we're here, ready to celebrate our love with all the people who matter most to us. This is just the beginning of our forever together.",
+    date: "2025",
+    icon: "🎉",
+    color: "from-green-200 to-mint-200"
+  }
+];
+
 export default function AnimatedTimeline({
-  items,
+  items = defaultTimelineItems,
   className = "",
 }: AnimatedTimelineProps) {
   const ref = useRef(null);
@@ -74,7 +117,7 @@ export default function AnimatedTimeline({
         animate={isInView ? "visible" : "hidden"}
         className="space-y-12"
       >
-        {items.map((item, index) => (
+        {items.map((item) => (
           <motion.div
             key={item.id}
             variants={itemVariants}

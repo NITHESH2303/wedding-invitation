@@ -8,12 +8,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Cinematic Emotional Color Palette - Exact Values
         peach: {
           50: "#fefcfb",
           100: "#fdf7f3",
           200: "#f9ede4",
-          300: "#f7f5f2", // Exact peach-grey from prompt
+          300: "#f7f5f2",
           400: "#f0d4c0",
           500: "#e8c4a8",
           600: "#d4a574",
@@ -25,7 +24,7 @@ module.exports = {
           50: "#fefdfb",
           100: "#fdfaf5",
           200: "#f9f3e8",
-          300: "#f9f6f1", // Exact oat from prompt
+          300: "#f9f6f1",
           400: "#f0e2c8",
           500: "#e8d4b0",
           600: "#d4b880",
@@ -37,7 +36,7 @@ module.exports = {
           50: "#fefcfb",
           100: "#fdf7f3",
           200: "#f9ede4",
-          300: "#f3edea", // Exact blush from prompt
+          300: "#f3edea",
           400: "#ede0d6",
           500: "#e6d1c2",
           600: "#d4b8a0",
@@ -49,7 +48,7 @@ module.exports = {
           50: "#f0fdf4",
           100: "#dcfce7",
           200: "#bbf7d0",
-          300: "#86efac", // Gentle mint accent
+          300: "#86efac",
           400: "#4ade80",
           500: "#22c55e",
         },
@@ -57,7 +56,7 @@ module.exports = {
           50: "#f0f9ff",
           100: "#e0f2fe",
           200: "#bae6fd",
-          300: "#7dd3fc", // Gentle sky blue accent
+          300: "#7dd3fc",
           400: "#38bdf8",
           500: "#0ea5e9",
         },
@@ -65,7 +64,7 @@ module.exports = {
           50: "#faf5ff",
           100: "#f3e8ff",
           200: "#e9d5ff",
-          300: "#d8b4fe", // Dusty purple accent
+          300: "#d8b4fe",
           400: "#c084fc",
           500: "#a855f7",
         },
@@ -73,7 +72,7 @@ module.exports = {
           50: "#fffbeb",
           100: "#fef3c7",
           200: "#fde68a",
-          300: "#fcd34d", // Gentle yellow accent
+          300: "#fcd34d",
           400: "#fbbf24",
           500: "#f59e0b",
         },
@@ -86,29 +85,28 @@ module.exports = {
           500: "#64748b",
           600: "#475569",
           700: "#334155",
-          800: "#1e293b", // Deep navy for headers
+          800: "#1e293b",
           900: "#0f172a",
         },
-        // Color Tokens - Enforced Roles
         love: {
-          bg: "#f3edea", // blush-300 for love/couple/story
-          accent: "#f9ede4", // blush-200
-          text: "#9c8266", // blush-800
+          bg: "#f3edea",
+          accent: "#f9ede4",
+          text: "#9c8266",
         },
         action: {
-          bg: "#86efac", // mint-300 for RSVP/action
-          accent: "#bbf7d0", // mint-200
-          text: "#166534", // mint-800
+          bg: "#86efac",
+          accent: "#bbf7d0",
+          text: "#166534",
         },
         celebration: {
-          bg: "#fcd34d", // gentle-300 for celebration
-          accent: "#fde68a", // gentle-200
-          text: "#92400e", // gentle-800
+          bg: "#fcd34d",
+          accent: "#fde68a",
+          text: "#92400e",
         },
         info: {
-          bg: "#f0f9ff", // sky-50 for info only
-          accent: "#bae6fd", // sky-200
-          text: "#0c4a6e", // sky-800
+          bg: "#f0f9ff",
+          accent: "#bae6fd",
+          text: "#0c4a6e",
         },
         cinematic: {
           "deep-red": "#8B0000",
@@ -133,12 +131,12 @@ module.exports = {
         story: ["1.25rem", { lineHeight: "1.6", fontWeight: "400" }],
       },
       letterSpacing: {
-        "widest-em": "0.18em", // Exact value from prompt
-        "wide-em": "0.12em", // Exact value from prompt
+        "widest-em": "0.18em",
+        "wide-em": "0.12em",
       },
       lineHeight: {
-        emotional: "1.8", // 1.7-1.9 range from prompt
-        warm: "1.7", // 1.7-1.9 range from prompt
+        emotional: "1.8",
+        warm: "1.7",
       },
       fontFamily: {
         cinematic: ["Playfair Display", "serif"],
