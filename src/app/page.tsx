@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react"; // 👈 Import useState
+import { useState } from "react";
+import Timer from "@/components/countdown";
 
 export default function HomePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // 👈 Add state for the menu
@@ -14,11 +15,21 @@ export default function HomePage() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <a href="#home" className="text-gray-600 hover:text-red-600">Home</a>
-            <a href="#story" className="text-gray-600 hover:text-red-600">Our Story</a>
-            <a href="#events" className="text-gray-600 hover:text-red-600">Events</a>
-            <a href="#family" className="text-gray-600 hover:text-red-600">Family</a>
-            <a href="#rsvp" className="text-gray-600 hover:text-red-600">RSVP</a>
+            <a href="#home" className="text-gray-600 hover:text-red-600">
+              Home
+            </a>
+            <a href="#story" className="text-gray-600 hover:text-red-600">
+              Our Story
+            </a>
+            <a href="#events" className="text-gray-600 hover:text-red-600">
+              Events
+            </a>
+            <a href="#family" className="text-gray-600 hover:text-red-600">
+              Family
+            </a>
+            <a href="#rsvp" className="text-gray-600 hover:text-red-600">
+              RSVP
+            </a>
           </nav>
 
           {/* Hamburger Button */}
@@ -26,7 +37,7 @@ export default function HomePage() {
             className="md:hidden text-gray-600 text-3xl"
             onClick={() => setIsMenuOpen(!isMenuOpen)} // 👈 Add onClick to toggle state
           >
-            {isMenuOpen ? "✕" : "☰"} {/* Change icon based on state */}
+            {isMenuOpen ? "✕" : "☰"}
           </button>
         </div>
       </header>
@@ -35,11 +46,41 @@ export default function HomePage() {
       {isMenuOpen && (
         <div className="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center md:hidden">
           <nav className="flex flex-col items-center space-y-8">
-            <a href="#home" className="text-2xl text-gray-800" onClick={() => setIsMenuOpen(false)}>Home</a>
-            <a href="#story" className="text-2xl text-gray-800" onClick={() => setIsMenuOpen(false)}>Our Story</a>
-            <a href="#events" className="text-2xl text-gray-800" onClick={() => setIsMenuOpen(false)}>Events</a>
-            <a href="#family" className="text-2xl text-gray-800" onClick={() => setIsMenuOpen(false)}>Family</a>
-            <a href="#rsvp" className="text-2xl text-gray-800" onClick={() => setIsMenuOpen(false)}>RSVP</a>
+            <a
+              href="#home"
+              className="text-2xl text-gray-800"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Home
+            </a>
+            <a
+              href="#story"
+              className="text-2xl text-gray-800"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Our Story
+            </a>
+            <a
+              href="#events"
+              className="text-2xl text-gray-800"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Events
+            </a>
+            <a
+              href="#family"
+              className="text-2xl text-gray-800"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Family
+            </a>
+            <a
+              href="#rsvp"
+              className="text-2xl text-gray-800"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              RSVP
+            </a>
           </nav>
         </div>
       )}
@@ -55,9 +96,7 @@ export default function HomePage() {
           </p>
           <h1 className="py-8 text-6xl md:text-8xl font-bold text-gray-900 mb-6">
             <span className="block">Boobana</span>
-            <span className="text-4xl text-red-500 block my-4 mx-auto">
-              💕
-            </span>
+            <span className="text-4xl text-red-500 block my-4 mx-auto">💕</span>
             <span className="block">Giri</span>
           </h1>
           <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100 max-w-md mx-auto mb-8">
@@ -72,7 +111,13 @@ export default function HomePage() {
               </p>
             </div>
           </div>
-          <a href="#story" className="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full text-xl font-semibold transition-colors">
+          <div className="mb-8">
+            <Timer />
+          </div>
+          <a
+            href="#story"
+            className="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full text-xl font-semibold transition-colors"
+          >
             View Our Story ❤️
           </a>
         </div>
@@ -87,43 +132,76 @@ export default function HomePage() {
           <div className="space-y-10 text-gray-700 leading-relaxed">
             <div>
               <p>
-                It all began the traditional way — with a photo shared in the family. Everyone was convinced it was a perfect match… except Boobana. She wanted to meet him first.
+                It all began the traditional way — with a photo shared in the
+                family. Everyone was convinced it was a perfect match… except
+                Boobana. She wanted to meet him first.
               </p>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold mt-6 mb-2">📿 The Temple Meet</h3>
+              <h3 className="text-2xl font-semibold mt-6 mb-2">
+                📿 The Temple Meet
+              </h3>
               <p>
-                The first meeting happened at a temple, surrounded by family. It was quiet — too quiet. Giri kept it polite, asking a few basic questions, and everyone left wondering if he was always this calm.
+                The first meeting happened at a temple, surrounded by family. It
+                was quiet — too quiet. Giri kept it polite, asking a few basic
+                questions, and everyone left wondering if he was always this
+                calm.
               </p>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold mt-6 mb-2">🚉 The Bangalore Twist</h3>
+              <h3 className="text-2xl font-semibold mt-6 mb-2">
+                🚉 The Bangalore Twist
+              </h3>
               <p>
-                Not satisfied, Boobana decided to meet him again — this time in Bangalore, just the two of them. That’s when the real Giri showed up: talkative, funny, and full of energy. Turns out, both of them shared the same vibe. Green signal: officially on.
+                Not satisfied, Boobana decided to meet him again — this time in
+                Bangalore, just the two of them. That’s when the real Giri
+                showed up: talkative, funny, and full of energy. Turns out, both
+                of them shared the same vibe. Green signal: officially on.
               </p>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold mt-6 mb-2">👕 The Blue Shirt Saga</h3>
+              <h3 className="text-2xl font-semibold mt-6 mb-2">
+                👕 The Blue Shirt Saga
+              </h3>
               <p>
-                Here’s the running family joke — every single time Giri showed up (temple, Bangalore, or home visit), he wore a blue shirt. At one point, everyone started to wonder if he even owned another color.
+                Here’s the running family joke — every single time Giri showed
+                up (temple, Bangalore, or home visit), he wore a blue shirt. At
+                one point, everyone started to wonder if he even owned another
+                color.
               </p>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold mt-6 mb-2">😂 The Gas Station Fail</h3>
+              <h3 className="text-2xl font-semibold mt-6 mb-2">
+                😂 The Gas Station Fail
+              </h3>
               <p>
-                There was even a failed “surprise visit” to Giri’s house. The family reached… only to find he had just stepped out to the gas station. Timing: 0/10. Effort: A+.
+                One fine day, Boobana and her brother decided to pull off a
+                “secret mission” — a surprise visit to Giri’s house, without
+                either family knowing. Everything was going smoothly until, of
+                course, they got caught. To make it even funnier, Giri wasn’t
+                home — he’d just stepped out to the gas station. The next day,
+                one of Giri’s relatives casually asked if Boobana had dropped
+                by… mission failed, laughter guaranteed.
               </p>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold mt-6 mb-2">🚗 The Adventures Begin</h3>
+              <h3 className="text-2xl font-semibold mt-6 mb-2">
+                🚗 The Adventures Begin
+              </h3>
               <p>
-                From there, it was countless Bangalore trips, endless conversations, and laughter that never ran out. Somewhere between traffic jams and filter coffee, the “arranged” quietly turned into “their story.”
+                From there, it was countless Bangalore trips, endless
+                conversations, and laughter that never ran out. Somewhere
+                between traffic jams and filter coffee, the “arranged” quietly
+                turned into “their story.”
               </p>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold mt-6 mb-2">💍 The Rest Is History</h3>
+              <h3 className="text-2xl font-semibold mt-6 mb-2">
+                💍 The Rest Is History
+              </h3>
               <p>
-                Families met, rings were exchanged, shopping marathons survived — and now it’s time for the grand celebration.
+                Families met, rings were exchanged, shopping marathons survived
+                — and now it’s time for the grand celebration.
               </p>
             </div>
           </div>
@@ -166,7 +244,8 @@ export default function HomePage() {
               </div>
               <div className="bg-red-50 p-4 rounded-lg">
                 <p className="text-red-700 font-medium">
-                  ⚡ Dress Code: Party ready! Come to dance, eat, laugh, and celebrate. 💃
+                  ⚡ Dress Code: Party ready! Come to dance, eat, laugh, and
+                  celebrate. 💃
                 </p>
               </div>
             </div>
@@ -196,7 +275,8 @@ export default function HomePage() {
               </div>
               <div className="bg-orange-50 p-4 rounded-lg">
                 <p className="text-orange-700 font-medium">
-                  🌅 Early bird club! Traditional attire encouraged—bright sarees & crisp dhotis.
+                  🌅 Early bird club! Traditional attire encouraged—bright
+                  sarees & crisp dhotis.
                 </p>
               </div>
             </div>
@@ -219,7 +299,9 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold text-pink-600 mb-2">Boobana</h3>
               <div className="bg-pink-50 p-6 rounded-xl">
                 <p className="text-gray-700 leading-relaxed">
-                  The sunshine of the story — the one who plans everything, forgets where she kept it, then laughs her way through it anyway. Loves coffee, chaos, and making sure everyone’s fed.
+                  The sunshine of the story — the one who plans everything,
+                  forgets where she kept it, then laughs her way through it
+                  anyway. Loves coffee, chaos, and making sure everyone’s fed.
                 </p>
               </div>
             </div>
@@ -231,14 +313,18 @@ export default function HomePage() {
               <h3 className="text-2xl font-bold text-yellow-600 mb-2">Giri</h3>
               <div className="bg-yellow-50 p-6 rounded-xl">
                 <p className="text-gray-700 leading-relaxed">
-                  The calm in the storm — a problem solver, a dream chaser, and occasionally the reason Wi-Fi stops working. Big ideas, bigger heart, and a secret talent for pretending he’s not emotional.
+                  The calm in the storm — a problem solver, a dream chaser, and
+                  occasionally the reason Wi-Fi stops working. Big ideas, bigger
+                  heart, and a secret talent for pretending he’s not emotional.
                 </p>
               </div>
             </div>
           </div>
           <div className="text-center mt-16 max-w-3xl mx-auto">
             <p className="text-lg text-gray-600 leading-relaxed">
-              Together, they&apos;re the perfect blend of calm and chaos, laughter and love — proof that soulmates don’t just exist in movies. They’re living theirs.
+              Together, they&apos;re the perfect blend of calm and chaos,
+              laughter and love — proof that soulmates don’t just exist in
+              movies. They’re living theirs.
             </p>
           </div>
         </div>
@@ -262,27 +348,63 @@ export default function HomePage() {
             <form className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
-                  <input type="text" required className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500" placeholder="Enter your full name"/>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Your Name
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
+                    placeholder="Enter your full name"
+                  />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                  <input type="email" required className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500" placeholder="your@email.com"/>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
+                    placeholder="your@email.com"
+                  />
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-                <input type="tel" className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500" placeholder="+91 98765 43210"/>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
+                  placeholder="+91 98765 43210"
+                />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">Which events will you attend? 🎉</label>
+                <label className="block text-sm font-medium text-gray-700 mb-3">
+                  Which events will you attend? 🎉
+                </label>
                 <div className="space-y-3">
-                  <label className="flex items-center"><input type="checkbox" className="mr-3 h-4 w-4 text-red-600"/><span>🕺 Reception Party - Nov 22nd</span></label>
-                  <label className="flex items-center"><input type="checkbox" className="mr-3 h-4 w-4 text-red-600"/><span>💒 Wedding Ceremony - Nov 23rd</span></label>
+                  <label className="flex items-center">
+                    <input
+                      type="checkbox"
+                      className="mr-3 h-4 w-4 text-red-600"
+                    />
+                    <span>🕺 Reception Party - Nov 22nd</span>
+                  </label>
+                  <label className="flex items-center">
+                    <input
+                      type="checkbox"
+                      className="mr-3 h-4 w-4 text-red-600"
+                    />
+                    <span>💒 Wedding Ceremony - Nov 23rd</span>
+                  </label>
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Food Preferences 🍛</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Food Preferences 🍛
+                </label>
                 <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500">
                   <option>South Indian Vegetarian</option>
                   <option>Jain Vegetarian (No onion/garlic)</option>
@@ -290,7 +412,9 @@ export default function HomePage() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">How many people total? (Including you)</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  How many people total? (Including you)
+                </label>
                 <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500">
                   <option>Just me! 🙋‍♀️</option>
                   <option>2 people (Me + 1)</option>
@@ -300,14 +424,26 @@ export default function HomePage() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Special message or requirements? 💬</label>
-                <textarea className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 h-24" placeholder="Any special needs, song requests, or just say hi! 😊"></textarea>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Special message or requirements? 💬
+                </label>
+                <textarea
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 h-24"
+                  placeholder="Any special needs, song requests, or just say hi! 😊"
+                ></textarea>
               </div>
-              <button type="submit" className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-4 px-6 rounded-lg text-lg transition-colors">Count Me In! 🎉</button>
+              <button
+                type="submit"
+                className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-4 px-6 rounded-lg text-lg transition-colors"
+              >
+                Count Me In! 🎉
+              </button>
             </form>
           </div>
           <div className="text-center mt-8 text-gray-600">
-            <p className="mb-2"><strong>Questions?</strong> WhatsApp us! 📱</p>
+            <p className="mb-2">
+              <strong>Questions?</strong> WhatsApp us! 📱
+            </p>
             <p>Boobana: +91 98765 43210 | Giri: +91 98765 43211</p>
           </div>
         </div>
