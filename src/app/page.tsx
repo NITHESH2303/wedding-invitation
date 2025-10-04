@@ -473,7 +473,7 @@ export default function HomePage() {
         <FloatingDoodles />
         
         <div className="max-w-4xl mx-auto px-8 py-8">
-          <ScrollReveal direction="up" className="text-center mb-8">
+          <ScrollReveal direction="up" className="text-center mb-8" once={false}>
             {/* Desktop: Single line */}
             <div className="hidden md:block">
               <div className="flex items-center justify-center gap-4 mb-8">
@@ -482,6 +482,7 @@ export default function HomePage() {
                   text="THE BIG DAYS"
                   className="text-5xl md:text-6xl font-handwritten text-navy-800 mb-8 tracking-widest-em uppercase transform -rotate-1"
                   direction="up"
+                  once={false}
                 />
                 <DoodleStar className="w-8 h-8 text-yellow-400" />
               </div>
@@ -495,6 +496,7 @@ export default function HomePage() {
                   text="THE BIG"
                   className="text-4xl font-handwritten text-navy-800 tracking-widest-em uppercase block transform -rotate-1"
                   direction="up"
+                  once={false}
                 />
                 <DoodleStar className="w-6 h-6 text-yellow-400" />
               </div>
@@ -502,6 +504,7 @@ export default function HomePage() {
                 text="DAYS"
                 className="text-4xl font-handwritten text-navy-800 tracking-widest-em uppercase block transform rotate-1"
                 direction="up"
+                once={false}
               />
             </div>
             <motion.div
@@ -622,7 +625,7 @@ export default function HomePage() {
         <FloatingDoodles />
         
         <div className="max-w-4xl mx-auto px-8 py-8">
-          <ScrollReveal direction="up" className="text-center mb-8">
+          <ScrollReveal direction="up" className="text-center mb-8" once={false}>
             {/* Desktop: Single line */}
             <div className="hidden md:block">
               <div className="flex items-center justify-center gap-4 mb-8">
@@ -631,6 +634,7 @@ export default function HomePage() {
                   text="DYNAMIC DUO"
                   className="text-5xl md:text-6xl font-handwritten text-navy-800 mb-8 tracking-widest-em uppercase transform -rotate-1"
                   direction="up"
+                  once={false}
                 />
                 <DoodleHeart className="w-8 h-8 text-pink-400" />
               </div>
@@ -644,6 +648,7 @@ export default function HomePage() {
                   text="DYNAMIC"
                   className="text-4xl font-handwritten text-navy-800 tracking-widest-em uppercase block transform -rotate-1"
                   direction="up"
+                  once={false}
                 />
                 <DoodleHeart className="w-6 h-6 text-pink-400" />
               </div>
@@ -651,13 +656,14 @@ export default function HomePage() {
                 text="DUO"
                 className="text-4xl font-handwritten text-navy-800 tracking-widest-em uppercase block transform rotate-1"
                 direction="up"
+                once={false}
               />
             </div>
           </ScrollReveal>
 
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Boobana Card - Smaller */}
-            <ScrollReveal direction="left" delay={0.2}>
+            <ScrollReveal direction="left" delay={0.2} once={false}>
               <motion.div
                 className="max-w-md mx-auto"
                 whileHover={{ scale: 1.02, y: -2 }}
@@ -692,7 +698,7 @@ export default function HomePage() {
             </ScrollReveal>
 
             {/* Giri Card - Smaller */}
-            <ScrollReveal direction="right" delay={0.4}>
+            <ScrollReveal direction="right" delay={0.4} once={false}>
               <motion.div
                 className="max-w-md mx-auto"
                 whileHover={{ scale: 1.02, y: -2 }}
@@ -768,7 +774,7 @@ export default function HomePage() {
         <FloatingDoodles />
         
         <div className="max-w-4xl mx-auto px-8 py-8">
-          <ScrollReveal direction="up" className="text-center mb-8">
+          <ScrollReveal direction="up" className="text-center mb-8" once={false}>
             <div className="hidden md:block">
               <div className="flex items-center justify-center gap-4 mb-8">
                 <DoodleFlower className="w-8 h-8 text-pink-400" />
@@ -776,6 +782,7 @@ export default function HomePage() {
                   text="JOIN THE PARTY"
                   className="text-5xl md:text-6xl font-handwritten text-navy-800 mb-8 tracking-widest-em uppercase transform -rotate-1"
                   direction="up"
+                  once={false}
                 />
                 <DoodleFlower className="w-8 h-8 text-pink-400" />
               </div>
@@ -788,6 +795,7 @@ export default function HomePage() {
                   text="JOIN THE"
                   className="text-4xl font-handwritten text-navy-800 tracking-widest-em uppercase block transform -rotate-1"
                   direction="up"
+                  once={false}
                 />
                 <DoodleFlower className="w-6 h-6 text-pink-400" />
               </div>
@@ -795,6 +803,7 @@ export default function HomePage() {
                 text="PARTY"
                 className="text-4xl font-handwritten text-navy-800 tracking-widest-em uppercase block transform rotate-1"
                 direction="up"
+                once={false}
               />
             </div>
             <motion.div
@@ -1007,6 +1016,7 @@ export default function HomePage() {
                   text="SEE YOU THERE!"
                   className="text-lg md:text-xl font-handwritten text-white tracking-widest-em uppercase transform -rotate-1"
                   direction="up"
+                  once={false}
                 />
                 <DoodleHeart className="w-5 h-5 text-pink-300" />
               </div>
