@@ -12,7 +12,7 @@ export default function Timer() {
   const [isExpired, setIsExpired] = useState(false)
 
   useEffect(() => {
-    const targetDate = new Date('2025-11-22T00:00:00').getTime()
+    const targetDate = new Date('2025-11-22T18:00:00').getTime()
 
     const updateTimer = () => {
       const now = new Date().getTime()

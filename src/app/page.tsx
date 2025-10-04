@@ -1,240 +1,332 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Timer from "@/components/countdown";
+import StaggeredText from "@/components/StaggeredText";
+import ScrollReveal from "@/components/ScrollReveal";
+import VideoBackground from "@/components/VideoBackground";
+import AnimatedCard from "@/components/AnimatedCard";
+import AnimatedIcon from "@/components/AnimatedIcon";
+import AnimatedTimeline from "@/components/AnimatedTimeline";
 
 export default function HomePage() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // 👈 Add state for the menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Hero section rotating texts
+  const heroTexts = [
+    "Boobana & Giri",
+    "Two Hearts, One Love",
+    "November 22nd & 23rd, 2025",
+    "Join Our Celebration!"
+  ];
+
+  // Timeline data for the love story
+  const timelineItems = [
+    {
+      id: 1,
+      title: "The First Meeting",
+      description: "It all began with a photo shared in the family. Everyone was convinced it was a perfect match… except Boobana. She wanted to meet him first.",
+      date: "March 2024",
+      icon: "📸",
+      color: "bg-blue-100 text-blue-600"
+    },
+    {
+      id: 2,
+      title: "The Temple Meet",
+      description: "The first meeting happened at a temple, surrounded by family. It was quiet — too quiet. Giri kept it polite, asking a few basic questions.",
+      date: "April 2024",
+      icon: "🕉️",
+      color: "bg-yellow-100 text-yellow-600"
+    },
+    {
+      id: 3,
+      title: "The Bangalore Twist",
+      description: "Not satisfied, Boobana decided to meet him again — this time in Bangalore, just the two of them. That's when the real Giri showed up!",
+      date: "May 2024",
+      icon: "🚉",
+      color: "bg-green-100 text-green-600"
+    },
+    {
+      id: 4,
+      title: "The Blue Shirt Saga",
+      description: "Here's the running family joke — every single time Giri showed up, he wore a blue shirt. At one point, everyone started to wonder if he even owned another color.",
+      date: "June 2024",
+      icon: "👕",
+      color: "bg-blue-100 text-blue-600"
+    },
+    {
+      id: 5,
+      title: "The Adventures Begin",
+      description: "From there, it was countless Bangalore trips, endless conversations, and laughter that never ran out. The 'arranged' quietly turned into 'their story.'",
+      date: "July 2024",
+      icon: "🚗",
+      color: "bg-purple-100 text-purple-600"
+    },
+    {
+      id: 6,
+      title: "The Proposal",
+      description: "Families met, rings were exchanged, shopping marathons survived — and now it's time for the grand celebration.",
+      date: "August 2024",
+      icon: "💍",
+      color: "bg-pink-100 text-pink-600"
+    }
+  ];
+
 
   return (
-    <main className="bg-white text-gray-900">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <main className="bg-[#FFF8F0] text-[#333333] overflow-hidden">
+      {/* Animated Header */}
+      <motion.header 
+        className="bg-[#FFF8F0]/80 backdrop-blur-sm border-b border-red-200 sticky top-0 z-50"
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="text-2xl font-bold text-red-600">B & G</div>
+          <motion.div 
+            className="text-2xl font-extrabold text-[#E53935]"
+            whileHover={{ scale: 1.1, color: "#C62828" }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            B & G
+          </motion.div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <a href="#home" className="text-gray-600 hover:text-red-600">
-              Home
-            </a>
-            <a href="#story" className="text-gray-600 hover:text-red-600">
-              Our Story
-            </a>
-            <a href="#events" className="text-gray-600 hover:text-red-600">
-              Events
-            </a>
-            <a href="#family" className="text-gray-600 hover:text-red-600">
-              Family
-            </a>
-            <a href="#rsvp" className="text-gray-600 hover:text-red-600">
-              RSVP
-            </a>
+            {["Home", "Story", "Events", "Couple", "RSVP"].map((item, index) => (
+              <motion.a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="text-[#333333] hover:text-[#E53935] transition-colors font-semibold"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 + 0.5 }}
+                whileHover={{ y: -2, color: "#E53935" }}
+              >
+                {item}
+              </motion.a>
+            ))}
           </nav>
 
           {/* Hamburger Button */}
-          <button
-            className="md:hidden text-gray-600 text-3xl"
-            onClick={() => setIsMenuOpen(!isMenuOpen)} // 👈 Add onClick to toggle state
+          <motion.button
+            className="md:hidden text-[#333333] text-3xl"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
             {isMenuOpen ? "✕" : "☰"}
-          </button>
+          </motion.button>
         </div>
-      </header>
+      </motion.header>
 
       {/* Mobile Menu Overlay */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center md:hidden">
-          <nav className="flex flex-col items-center space-y-8">
-            <a
-              href="#home"
-              className="text-2xl text-gray-800"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Home
-            </a>
-            <a
-              href="#story"
-              className="text-2xl text-gray-800"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Our Story
-            </a>
-            <a
-              href="#events"
-              className="text-2xl text-gray-800"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Events
-            </a>
-            <a
-              href="#family"
-              className="text-2xl text-gray-800"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Family
-            </a>
-            <a
-              href="#rsvp"
-              className="text-2xl text-gray-800"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              RSVP
-            </a>
-          </nav>
-        </div>
-      )}
-
-      {/* Rest of your page content... */}
-      <section
-        id="home"
-        className="flex items-center min-h-screen justify-center text-center bg-gradient-to-br from-red-50 to-orange-50"
-      >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-          <p className="text-gray-600 mb-8">
-            Two hearts unite, a beautiful story begins
-          </p>
-          <h1 className="py-8 text-6xl md:text-8xl font-bold text-gray-900 mb-6">
-            <span className="block">Boobana</span>
-            <span className="text-4xl text-red-500 block my-4 mx-auto">💕</span>
-            <span className="block">Giri</span>
-          </h1>
-          <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100 max-w-md mx-auto mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              🎉 Wedding Celebration
-            </h2>
-            <div className="space-y-2 text-lg">
-              <p className="font-semibold">November 22nd & 23rd, 2025</p>
-              <p className="text-gray-600">Namakkal, Tamil Nadu</p>
-              <p className="text-red-600 font-medium">
-                Let&apos;s party together! 🎊
-              </p>
-            </div>
-          </div>
-          <div className="mb-8">
-            <Timer />
-          </div>
-          <a
-            href="#story"
-            className="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full text-xl font-semibold transition-colors"
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            className="fixed inset-0 bg-[#FFF8F0] z-40 flex flex-col items-center justify-center md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
           >
-            View Our Story ❤️
-          </a>
-        </div>
-      </section>
+            <nav className="flex flex-col items-center space-y-8">
+              {["Home", "Story", "Events", "Couple", "RSVP"].map((item, index) => (
+                <motion.a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="text-2xl text-[#333333] font-semibold"
+                  onClick={() => setIsMenuOpen(false)}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ scale: 1.1, color: "#E53935" }}
+                >
+                  {item}
+                </motion.a>
+              ))}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {/* Our Story Section */}
-      <section id="story" className="py-24 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-gray-900 text-center mb-12">
-            Our Love Story 💕
-          </h2>
-          <div className="space-y-10 text-gray-700 leading-relaxed">
-            <div>
-              <p>
-                It all began the traditional way — with a photo shared in the
-                family. Everyone was convinced it was a perfect match… except
-                Boobana. She wanted to meet him first.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-2xl font-semibold mt-6 mb-2">
-                📿 The Temple Meet
-              </h3>
-              <p>
-                The first meeting happened at a temple, surrounded by family. It
-                was quiet — too quiet. Giri kept it polite, asking a few basic
-                questions, and everyone left wondering if he was always this
-                calm.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-2xl font-semibold mt-6 mb-2">
-                🚉 The Bangalore Twist
-              </h3>
-              <p>
-                Not satisfied, Boobana decided to meet him again — this time in
-                Bangalore, just the two of them. That’s when the real Giri
-                showed up: talkative, funny, and full of energy. Turns out, both
-                of them shared the same vibe. Green signal: officially on.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-2xl font-semibold mt-6 mb-2">
-                👕 The Blue Shirt Saga
-              </h3>
-              <p>
-                Here’s the running family joke — every single time Giri showed
-                up (temple, Bangalore, or home visit), he wore a blue shirt. At
-                one point, everyone started to wonder if he even owned another
-                color.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-2xl font-semibold mt-6 mb-2">
-                😂 The Gas Station Fail
-              </h3>
-              <p>
-                One fine day, Boobana and her brother decided to pull off a
-                “secret mission” — a surprise visit to Giri’s house, without
-                either family knowing. Everything was going smoothly until, of
-                course, they got caught. To make it even funnier, Giri wasn’t
-                home — he’d just stepped out to the gas station. The next day,
-                one of Giri’s relatives casually asked if Boobana had dropped
-                by… mission failed, laughter guaranteed.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-2xl font-semibold mt-6 mb-2">
-                🚗 The Adventures Begin
-              </h3>
-              <p>
-                From there, it was countless Bangalore trips, endless
-                conversations, and laughter that never ran out. Somewhere
-                between traffic jams and filter coffee, the “arranged” quietly
-                turned into “their story.”
-              </p>
-            </div>
-            <div>
-              <h3 className="text-2xl font-semibold mt-6 mb-2">
-                💍 The Rest Is History
-              </h3>
-              <p>
-                Families met, rings were exchanged, shopping marathons survived
-                — and now it’s time for the grand celebration.
-              </p>
-            </div>
+      {/* Hero Section with Enhanced Visual Grouping */}
+      <section id="home" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[#FFF8F0] via-red-50 to-pink-50 overflow-hidden">
+        {/* Background Video with Fallback */}
+        <div className="absolute inset-0">
+          <VideoBackground
+            videoSrc="/hero-video.mp4"
+            texts={heroTexts}
+            interval={4000}
+            className="absolute inset-0"
+          />
+          {/* Fallback Background if video fails */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#FFF8F0] via-red-50 to-pink-50">
+            {/* Decorative Elements */}
+            <div className="absolute top-10 left-10 text-6xl opacity-20 animate-pulse">💍</div>
+            <div className="absolute top-20 right-20 text-5xl opacity-20 animate-bounce">💕</div>
+            <div className="absolute bottom-20 left-20 text-4xl opacity-20 animate-pulse">🎊</div>
+            <div className="absolute bottom-10 right-10 text-5xl opacity-20 animate-bounce">👰‍♀️🤵‍♂️</div>
           </div>
         </div>
+        
+        {/* Main Hero Content - Tightly Grouped */}
+        <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
+          <motion.div
+            className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl border border-white/30"
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1, delay: 0.3 }}
+          >
+            {/* Couple Image with Fallback */}
+            <motion.div
+              className="mb-6 flex justify-center"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              <div className="relative">
+                <img 
+                  src="/couple-engagement.jpg" 
+                  alt="Couple engagement photo: Boobana & Giri, all smiles and sparkle!"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                  }}
+                  className="rounded-full shadow-2xl h-32 w-32 md:h-40 md:w-40 object-cover border-4 border-[#E53935]/20"
+                />
+                {/* Fallback UI */}
+                <div className="hidden fallback flex items-center justify-center h-32 w-32 md:h-40 md:w-40 bg-gradient-to-br from-pink-100 to-red-100 rounded-full text-2xl md:text-3xl font-extrabold text-[#E53935] border-4 border-[#E53935]/20 shadow-2xl">
+                  👫 B&G
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Couple Names - Bold and Playful */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.7 }}
+              className="mb-4"
+            >
+              <StaggeredText
+                text="Boobana & Giri"
+                className="text-5xl md:text-7xl font-extrabold text-[#333333] mb-2"
+                direction="up"
+              />
+            </motion.div>
+
+            {/* Wedding Announcement - Elegant */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+              className="mb-6"
+            >
+              <h2 className="text-2xl md:text-3xl font-bold text-[#E53935] mb-2">
+                🎉 Wedding Celebration
+              </h2>
+              <div className="space-y-1 text-lg md:text-xl">
+                <p className="font-semibold text-[#333333]">November 22nd & 23rd, 2025</p>
+                <p className="text-[#333333]/70">Namakkal, Tamil Nadu</p>
+                <p className="text-[#E53935] font-bold">
+                  Let's party together! 🎊
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Countdown Timer - Enhanced */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.1 }}
+              className="mb-6"
+            >
+              <Timer />
+            </motion.div>
+
+            {/* CTA Button - Enhanced */}
+            <motion.a
+              href="#story"
+              className="inline-block bg-gradient-to-r from-[#E53935] to-[#C62828] hover:from-[#C62828] hover:to-[#B71C1C] text-white px-8 py-4 rounded-full text-xl font-extrabold transition-all duration-300 shadow-xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.3 }}
+              whileHover={{ 
+                scale: 1.05, 
+                y: -3,
+                boxShadow: "0 15px 35px rgba(229, 57, 53, 0.4)"
+              }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Discover our love story and wedding journey"
+            >
+              Discover Our Story ❤️
+            </motion.a>
+          </motion.div>
+        </div>
       </section>
 
-      {/* Events Section */}
-      <section id="events" className="py-20 bg-gray-50">
+      {/* Our Story Section with Timeline */}
+      <section id="story" className="py-24 bg-[#FFF8F0] bg-gradient-to-br from-[#FFF8F0] to-red-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center text-gray-900 mb-4">
-            Two Days of Epic Fun! 🎪
-          </h2>
-          <p className="text-xl text-center text-gray-600 mb-16">
-            Mark your calendars - it&apos;s going to be legendary!
-          </p>
+          <ScrollReveal direction="up" className="text-center mb-16">
+            <StaggeredText
+              text="Our Love Story"
+              className="text-5xl font-extrabold text-[#333333] mb-4"
+              direction="up"
+            />
+            <motion.p
+              className="text-xl text-[#333333]/70"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+            >
+              A journey of two hearts finding each other 💕
+            </motion.p>
+          </ScrollReveal>
+
+          <AnimatedTimeline items={timelineItems} />
+        </div>
+      </section>
+
+      {/* Events Section with Animated Cards */}
+      <section id="events" className="py-20 bg-[#FFF8F0]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal direction="up" className="text-center mb-16">
+            <StaggeredText
+              text="Two Days of Epic Fun!"
+              className="text-5xl font-extrabold text-[#333333] mb-4"
+              direction="up"
+            />
+            <motion.p
+              className="text-xl text-[#333333]/70"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+            >
+              Mark your calendars - it's going to be legendary! 🎪
+            </motion.p>
+          </ScrollReveal>
+
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Reception Day */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+            <AnimatedCard delay={0.2} className="group">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-bold text-red-600">
+                <h3 className="text-2xl font-extrabold text-[#E53935]">
                   🕺 Wedding Reception
                 </h3>
-                <span className="text-4xl">🎉</span>
+                <AnimatedIcon animation="bounce" className="text-4xl">
+                  🎉
+                </AnimatedIcon>
               </div>
               <div className="space-y-4 mb-6">
                 <div>
-                  <p className="font-semibold text-lg">November 22nd, 2025</p>
-                  <p className="text-gray-600">6:00 PM - 10:00 PM</p>
-                  <p className="text-gray-600">Aishwarya Mahal, Namakkal</p>
+                  <p className="font-semibold text-lg text-[#333333]">November 22nd, 2025</p>
+                  <p className="text-[#333333]/70">6:00 PM - 10:00 PM</p>
+                  <p className="text-[#333333]/70">Aishwarya Mahal, Namakkal</p>
                 </div>
-                <div className="border-l-4 border-red-200 pl-4">
-                  <p className="font-medium text-red-600">What to expect:</p>
-                  <ul className="text-gray-600 list-disc list-inside space-y-1">
+                <div className="border-l-4 border-[#E53935]/30 pl-4">
+                  <p className="font-semibold text-[#E53935]">What to expect:</p>
+                  <ul className="text-[#333333]/70 list-disc list-inside space-y-1">
                     <li>Unlimited South Indian feast</li>
                     <li>DJ + Live music</li>
                     <li>Surprise sweet moments</li>
@@ -242,30 +334,31 @@ export default function HomePage() {
                   </ul>
                 </div>
               </div>
-              <div className="bg-red-50 p-4 rounded-lg">
-                <p className="text-red-700 font-medium">
-                  ⚡ Dress Code: Party ready! Come to dance, eat, laugh, and
-                  celebrate. 💃
+              <div className="bg-[#E53935]/10 p-4 rounded-lg">
+                <p className="text-[#E53935] font-semibold">
+                  ⚡ Dress Code: Party ready! Come to dance, eat, laugh, and celebrate. 💃
                 </p>
               </div>
-            </div>
-            {/* Wedding Day */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+            </AnimatedCard>
+
+            <AnimatedCard delay={0.4} className="group">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-bold text-orange-600">
+                <h3 className="text-2xl font-extrabold text-[#FFB300]">
                   💒 The Main Event
                 </h3>
-                <span className="text-4xl">👰‍♀️🤵‍♂️</span>
+                <AnimatedIcon animation="float" className="text-4xl">
+                  👰‍♀️🤵‍♂️
+                </AnimatedIcon>
               </div>
               <div className="space-y-4 mb-6">
                 <div>
-                  <p className="font-semibold text-lg">November 23rd, 2025</p>
-                  <p className="text-gray-600">4:30 AM - 10:00 AM</p>
-                  <p className="text-gray-600">Aishwarya Mahal, Namakkal</p>
+                  <p className="font-semibold text-lg text-[#333333]">November 23rd, 2025</p>
+                  <p className="text-[#333333]/70">4:30 AM - 10:00 AM</p>
+                  <p className="text-[#333333]/70">Aishwarya Mahal, Namakkal</p>
                 </div>
-                <div className="border-l-4 border-orange-200 pl-4">
-                  <p className="font-medium text-orange-600">What to expect:</p>
-                  <ul className="text-gray-600 list-disc list-inside space-y-1">
+                <div className="border-l-4 border-[#FFB300]/30 pl-4">
+                  <p className="font-semibold text-[#FFB300]">What to expect:</p>
+                  <ul className="text-[#333333]/70 list-disc list-inside space-y-1">
                     <li>Sunrise fire ritual & blessing</li>
                     <li>Flower shower & garland draping</li>
                     <li>Candid family selfies</li>
@@ -273,196 +366,236 @@ export default function HomePage() {
                   </ul>
                 </div>
               </div>
-              <div className="bg-orange-50 p-4 rounded-lg">
-                <p className="text-orange-700 font-medium">
-                  🌅 Early bird club! Traditional attire encouraged—bright
-                  sarees & crisp dhotis.
+              <div className="bg-[#FFB300]/10 p-4 rounded-lg">
+                <p className="text-[#FFB300] font-semibold">
+                  🌅 Early bird club! Traditional attire encouraged—bright sarees & crisp dhotis.
                 </p>
               </div>
-            </div>
+            </AnimatedCard>
           </div>
         </div>
       </section>
 
       {/* Meet the Couple Section */}
-      <section id="couple" className="py-24 bg-white text-gray-900">
+      <section id="couple" className="py-24 bg-gradient-to-br from-[#FFF8F0] to-yellow-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center mb-16">
-            Dynamic Duo 💫
-          </h2>
+          <ScrollReveal direction="up" className="text-center mb-16">
+            <StaggeredText
+              text="Dynamic Duo"
+              className="text-5xl font-extrabold text-[#333333] mb-4"
+              direction="up"
+            />
+          </ScrollReveal>
+
           <div className="grid md:grid-cols-2 gap-12 items-start">
-            {/* Bride */}
-            <div className="text-center">
-              <div className="w-40 h-40 bg-pink-100 rounded-full mx-auto mb-6 flex items-center justify-center">
-                <span className="text-6xl">👰‍♀️</span>
+            <ScrollReveal direction="left" delay={0.2}>
+              <div className="text-center">
+                <motion.div
+                  className="w-40 h-40 bg-pink-100 rounded-full mx-auto mb-6 flex items-center justify-center"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <AnimatedIcon animation="float" className="text-6xl">
+                    👰‍♀️
+                  </AnimatedIcon>
+                </motion.div>
+                <h3 className="text-2xl font-extrabold text-pink-600 mb-2">Boobana</h3>
+                <AnimatedCard className="bg-pink-50">
+                  <p className="text-[#333333] leading-relaxed">
+                    The sunshine of the story — the one who plans everything, forgets where she kept it, then laughs her way through it anyway. Loves coffee, chaos, and making sure everyone's fed.
+                  </p>
+                </AnimatedCard>
               </div>
-              <h3 className="text-2xl font-bold text-pink-600 mb-2">Boobana</h3>
-              <div className="bg-pink-50 p-6 rounded-xl">
-                <p className="text-gray-700 leading-relaxed">
-                  The sunshine of the story — the one who plans everything,
-                  forgets where she kept it, then laughs her way through it
-                  anyway. Loves coffee, chaos, and making sure everyone’s fed.
-                </p>
+            </ScrollReveal>
+
+            <ScrollReveal direction="right" delay={0.4}>
+              <div className="text-center">
+                <motion.div
+                  className="w-40 h-40 bg-yellow-100 rounded-full mx-auto mb-6 flex items-center justify-center"
+                  whileHover={{ scale: 1.1, rotate: -5 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <AnimatedIcon animation="pulse" className="text-6xl">
+                    🤵‍♂️
+                  </AnimatedIcon>
+                </motion.div>
+                <h3 className="text-2xl font-extrabold text-yellow-600 mb-2">Giri</h3>
+                <AnimatedCard className="bg-yellow-50">
+                  <p className="text-[#333333] leading-relaxed">
+                    The calm in the storm — a problem solver, a dream chaser, and occasionally the reason Wi-Fi stops working. Big ideas, bigger heart, and a secret talent for pretending he's not emotional.
+                  </p>
+                </AnimatedCard>
               </div>
-            </div>
-            {/* Groom */}
-            <div className="text-center">
-              <div className="w-40 h-40 bg-yellow-100 rounded-full mx-auto mb-6 flex items-center justify-center">
-                <span className="text-6xl">🤵‍♂️</span>
-              </div>
-              <h3 className="text-2xl font-bold text-yellow-600 mb-2">Giri</h3>
-              <div className="bg-yellow-50 p-6 rounded-xl">
-                <p className="text-gray-700 leading-relaxed">
-                  The calm in the storm — a problem solver, a dream chaser, and
-                  occasionally the reason Wi-Fi stops working. Big ideas, bigger
-                  heart, and a secret talent for pretending he’s not emotional.
-                </p>
-              </div>
-            </div>
+            </ScrollReveal>
           </div>
-          <div className="text-center mt-16 max-w-3xl mx-auto">
-            <p className="text-lg text-gray-600 leading-relaxed">
-              Together, they&apos;re the perfect blend of calm and chaos,
-              laughter and love — proof that soulmates don’t just exist in
-              movies. They’re living theirs.
-            </p>
-          </div>
+
+          <ScrollReveal direction="up" className="text-center mt-16">
+            <motion.p
+              className="text-lg text-[#333333]/70 leading-relaxed max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+            >
+              Together, they're the perfect blend of calm and chaos, laughter and love — proof that soulmates don't just exist in movies. They're living theirs.
+            </motion.p>
+          </ScrollReveal>
         </div>
       </section>
 
+
       {/* RSVP Section */}
-      <section
-        id="rsvp"
-        className="py-20 bg-gradient-to-br from-red-50 to-orange-50"
-      >
+      <section id="rsvp" className="py-20 bg-gradient-to-br from-[#FFF8F0] to-red-50">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Join Our Epic Celebration! 🎊
-            </h2>
-            <p className="text-xl text-gray-600">
-              Don&apos;t ghost us—RSVP so we know how much sambar to make!
-            </p>
-          </div>
-          <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+          <ScrollReveal direction="up" className="text-center mb-12">
+            <StaggeredText
+              text="Join Our Epic Celebration!"
+              className="text-5xl font-extrabold text-[#333333] mb-4"
+              direction="up"
+            />
+            <motion.p
+              className="text-xl text-[#333333]/70"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+            >
+              Don't ghost us—RSVP so we know how much sambar to make!
+            </motion.p>
+          </ScrollReveal>
+
+          <AnimatedCard delay={0.3}>
             <form className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <label className="block text-sm font-semibold text-[#333333] mb-2">Your Name</label>
+                  <input 
+                    type="text" 
+                    required 
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E53935] transition-all duration-300 focus:scale-105" 
                     placeholder="Enter your full name"
                   />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <label className="block text-sm font-semibold text-[#333333] mb-2">Email Address</label>
+                  <input 
+                    type="email" 
+                    required 
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E53935] transition-all duration-300 focus:scale-105" 
                     placeholder="your@email.com"
                   />
-                </div>
+                </motion.div>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+              >
+                <label className="block text-sm font-semibold text-[#333333] mb-2">Phone Number</label>
+                <input 
+                  type="tel" 
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#E53935] transition-all duration-300 focus:scale-105" 
                   placeholder="+91 98765 43210"
                 />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">
-                  Which events will you attend? 🎉
-                </label>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 }}
+              >
+                <label className="block text-sm font-semibold text-[#333333] mb-3">Which events will you attend? 🎉</label>
                 <div className="space-y-3">
-                  <label className="flex items-center">
-                    <input
-                      type="checkbox"
-                      className="mr-3 h-4 w-4 text-red-600"
-                    />
-                    <span>🕺 Reception Party - Nov 22nd</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input
-                      type="checkbox"
-                      className="mr-3 h-4 w-4 text-red-600"
-                    />
-                    <span>💒 Wedding Ceremony - Nov 23rd</span>
-                  </label>
+                  <motion.label 
+                    className="flex items-center cursor-pointer"
+                    whileHover={{ x: 5 }}
+                  >
+                    <input type="checkbox" className="mr-3 h-4 w-4 text-[#E53935]"/>
+                    <span className="text-[#333333]">🕺 Reception Party - Nov 22nd</span>
+                  </motion.label>
+                  <motion.label 
+                    className="flex items-center cursor-pointer"
+                    whileHover={{ x: 5 }}
+                  >
+                    <input type="checkbox" className="mr-3 h-4 w-4 text-[#E53935]"/>
+                    <span className="text-[#333333]">💒 Wedding Ceremony - Nov 23rd</span>
+                  </motion.label>
                 </div>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Food Preferences 🍛
-                </label>
-                <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500">
-                  <option>South Indian Vegetarian</option>
-                  <option>Jain Vegetarian (No onion/garlic)</option>
-                  <option>I&apos;ll eat anything delicious! 😋</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  How many people total? (Including you)
-                </label>
-                <select className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500">
-                  <option>Just me! 🙋‍♀️</option>
-                  <option>2 people (Me + 1)</option>
-                  <option>3 people (Me + 2)</option>
-                  <option>4 people (Me + 3)</option>
-                  <option>5+ people (I&apos;ll contact you!)</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Special message or requirements? 💬
-                </label>
-                <textarea
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 h-24"
-                  placeholder="Any special needs, song requests, or just say hi! 😊"
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-4 px-6 rounded-lg text-lg transition-colors"
+              </motion.div>
+
+              <motion.button 
+                type="submit" 
+                className="w-full bg-gradient-to-r from-[#E53935] to-[#C62828] hover:from-[#C62828] hover:to-[#B71C1C] text-white font-extrabold py-4 px-6 rounded-lg text-lg transition-all duration-300 shadow-lg"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
+                whileHover={{ 
+                  scale: 1.02, 
+                  y: -2,
+                  boxShadow: "0 10px 30px rgba(229, 57, 53, 0.4)"
+                }}
+                whileTap={{ scale: 0.98 }}
               >
                 Count Me In! 🎉
-              </button>
+              </motion.button>
             </form>
-          </div>
-          <div className="text-center mt-8 text-gray-600">
-            <p className="mb-2">
-              <strong>Questions?</strong> WhatsApp us! 📱
-            </p>
+          </AnimatedCard>
+
+          <ScrollReveal direction="up" className="text-center mt-8 text-[#333333]/70">
+            <p className="mb-2"><strong>Questions?</strong> WhatsApp us! 📱</p>
             <p>Boobana: +91 98765 43210 | Giri: +91 98765 43211</p>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <motion.footer 
+        className="bg-[#333333] text-white py-12"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h3 className="text-2xl font-bold mb-4">Boobana & Giri</h3>
-          <p className="text-gray-400 mb-6">
+          <motion.h3 
+            className="text-2xl font-extrabold mb-4"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            Boobana & Giri
+          </motion.h3>
+          <motion.p 
+            className="text-gray-400 mb-6"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
             November 22nd & 23rd, 2025 • Namakkal, Tamil Nadu
-          </p>
-          <div className="border-t border-gray-800 pt-6">
-            <p className="text-gray-500">
+          </motion.p>
+          <motion.div 
+            className="border-t border-gray-700 pt-6"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+          >
+            <StaggeredText
+              text="See You There!"
+              className="text-xl font-extrabold text-white"
+              direction="up"
+            />
+            <p className="text-gray-400 mt-2">
               Made with ❤️ for our special day | See you on the dance floor!
             </p>
-          </div>
+          </motion.div>
         </div>
-      </footer>
+      </motion.footer>
     </main>
   );
 }
