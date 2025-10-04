@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, Geist, Geist_Mono } from "next/font/google";
+import { Inter, Caveat, Kalam, Shadows_Into_Light, Dancing_Script } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+const caveat = Caveat({ subsets: ["latin"], variable: "--font-caveat" });
+const kalam = Kalam({ subsets: ["latin"], weight: ["300", "400", "700"], variable: "--font-kalam" });
+const shadows = Shadows_Into_Light({ subsets: ["latin"], weight: "400", variable: "--font-shadows" });
+const dancing = Dancing_Script({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-dancing" });
 
 export const metadata: Metadata = {
   title: "Boobana & Giri's Wedding",
@@ -16,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} ${caveat.variable} ${kalam.variable} ${shadows.variable} ${dancing.variable}`}>
         {children}
       </body>
     </html>

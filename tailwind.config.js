@@ -145,6 +145,10 @@ module.exports = {
         story: ["Crimson Text", "serif"],
         tamil: ["Mukti", "Noto Sans Tamil", "sans-serif"],
         sans: ["Inter", "system-ui", "sans-serif"],
+          handwritten: ['Caveat', 'cursive'],
+        doodle: ['Kalam', 'cursive'],
+        sketch: ['Shadows Into Light', 'cursive'],
+        script: ['Dancing Script', 'cursive'],
       },
       animation: {
         "fade-in": "fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1)",

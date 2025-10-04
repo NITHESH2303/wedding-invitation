@@ -6,6 +6,7 @@ import Timer from "@/components/countdown";
 import StaggeredText from "@/components/StaggeredText";
 import ScrollReveal from "@/components/ScrollReveal";
 import AnimatedTimeline from "@/components/AnimatedTimeline";
+import { DoodleHeart, DoodleStar, DoodleFlower, DoodleArrow, DoodleFrame, FloatingDoodles } from "@/components/DoodleArt";
 
 export default function HomePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -79,9 +80,6 @@ export default function HomePage() {
             </h1>
             <p className="text-4xl md:text-5xl font-bold text-navy-700 tracking-wide-em mb-8">
               WEDDING CELEBRATION
-            </p>
-            <p className="text-xl md:text-2xl text-navy-600 font-medium leading-emotional">
-              November 22nd & 23rd, 2025 • Namakkal, Tamil Nadu
             </p>
           </div>
         </div>
@@ -167,8 +165,18 @@ export default function HomePage() {
       {/* Cinematic Hero Section - Much Larger */}
       <section
         id="home"
-        className="relative min-h-screen flex items-center justify-center bg-oat-300 overflow-hidden"
+        className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-cream-100 via-oat-50 to-peach-50 overflow-hidden"
+        style={{
+          backgroundImage: `
+            radial-gradient(circle at 20% 50%, rgba(251, 191, 36, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 40% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%)
+          `
+        }}
       >
+        {/* Floating Doodles */}
+        <FloatingDoodles />
+        
         <div className="absolute inset-0">
           <motion.div
             className="absolute w-1 h-1 rounded-full"
@@ -254,7 +262,7 @@ export default function HomePage() {
             <div className="hidden md:block">
               <StaggeredText
                 text="BOOBANA & GIRI"
-                className="text-7xl md:text-8xl lg:text-9xl font-extrabold text-navy-800 tracking-widest-em uppercase text-center mb-16"
+                className="text-7xl md:text-8xl lg:text-9xl font-handwritten text-navy-800 tracking-widest-em uppercase text-center mb-16 transform -rotate-1"
                 direction="up"
               />
             </div>
@@ -262,90 +270,99 @@ export default function HomePage() {
             <div className="block md:hidden text-center mb-16">
               <StaggeredText
                 text="BOOBANA"
-                className="text-5xl font-extrabold text-navy-800 tracking-widest-em uppercase block"
+                className="text-5xl font-handwritten text-navy-800 tracking-widest-em uppercase block transform -rotate-1"
                 direction="up"
               />
               <StaggeredText
                 text="&"
-                className="text-4xl font-extrabold text-navy-800 tracking-widest-em uppercase block my-2"
+                className="text-4xl font-script text-navy-800 tracking-widest-em uppercase block my-2 transform rotate-1"
                 direction="up"
               />
               <StaggeredText
                 text="GIRI"
-                className="text-5xl font-extrabold text-navy-800 tracking-widest-em uppercase block"
+                className="text-5xl font-handwritten text-navy-800 tracking-widest-em uppercase block transform rotate-1"
                 direction="up"
               />
             </div>
-            <motion.p
-              className="text-4xl md:text-5xl font-bold text-navy-700 tracking-wide-em mb-8"
+            <motion.div
+              className="flex items-center justify-center gap-4 mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
             >
-              WEDDING CELEBRATION
-            </motion.p>
-            <motion.p
-              className="text-xl md:text-2xl text-navy-600 font-medium leading-emotional"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.0 }}
-            >
-              November 22nd & 23rd, 2025 • Namakkal, Tamil Nadu
-            </motion.p>
+              <DoodleHeart className="w-8 h-8 text-pink-400" />
+              <p className="text-4xl md:text-5xl font-doodle text-navy-700 tracking-wide-em transform rotate-1">
+                WEDDING CELEBRATION
+              </p>
+              <DoodleHeart className="w-8 h-8 text-pink-400" />
+            </motion.div>
           </motion.div>
 
           <motion.div
-            className="bg-gradient-to-r from-peach-200 to-blush-100 rounded-xl p-4 shadow-lg mb-8 max-w-md mx-auto"
+            className="mb-8 max-w-md mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: animationConfig.duration, delay: 0.7, ease: animationConfig.ease }}
-            style={{ boxShadow: '0 10px 20px rgba(0,0,0,0.08)' }}
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98 }}
+            transition={{ duration: animationConfig.duration, delay: 0.7, ease: "easeOut" }}
           >
-            <div className="text-center">
-              <h3 className="text-lg font-extrabold text-navy-800 mb-3 tracking-widest-em uppercase">
-                THE BIG DAYS
-              </h3>
-              <div className="space-y-2 text-sm leading-emotional">
-                <p className="font-bold text-navy-700">November 22nd & 23rd, 2025</p>
-                <p className="text-navy-600">Namakkal, Tamil Nadu</p>
-            </div>
-            </div>
+            <DoodleFrame className="bg-gradient-to-r from-peach-200 to-blush-100 rounded-xl p-4 shadow-lg">
+              <div className="text-center">
+                <div className="flex items-center justify-center gap-2 mb-3">
+                  <DoodleStar className="w-5 h-5 text-yellow-500" />
+                  <h3 className="text-lg font-doodle text-navy-800 tracking-widest-em uppercase">
+                    THE BIG DAYS
+                  </h3>
+                  <DoodleStar className="w-5 h-5 text-yellow-500" />
+                </div>
+                <div className="space-y-2 text-sm leading-emotional">
+                  <p className="font-bold text-navy-700">November 22nd & 23rd, 2025</p>
+                  <p className="text-navy-600">Namakkal, Tamil Nadu</p>
+                </div>
+              </div>
+            </DoodleFrame>
           </motion.div>
 
           <motion.div
-            className="bg-gradient-to-r from-mint-200 to-gentle-200 rounded-xl p-4 shadow-lg mb-8 max-w-md mx-auto"
+            className="mb-8 max-w-md mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: animationConfig.duration, delay: 0.9, ease: animationConfig.ease }}
-            style={{ boxShadow: '0 10px 20px rgba(0,0,0,0.08)' }}
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98 }}
+            transition={{ duration: animationConfig.duration, delay: 0.9, ease: "easeOut" }}
           >
-            <div className="text-center">
-              <h3 className="text-lg font-extrabold text-navy-800 mb-4 tracking-widest-em uppercase">
-                COUNTDOWN TO OUR SPECIAL DAY
-              </h3>
-              <Timer />
-            </div>
+            <DoodleFrame className="bg-gradient-to-r from-mint-200 to-gentle-200 rounded-xl p-4 shadow-lg">
+              <div className="text-center">
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <DoodleFlower className="w-6 h-6 text-pink-400" />
+                  <h3 className="text-lg font-sketch text-navy-800 mb-4 tracking-widest-em uppercase">
+                    COUNTDOWN TO OUR SPECIAL DAY
+                  </h3>
+                  <DoodleFlower className="w-6 h-6 text-pink-400" />
+                </div>
+                <Timer />
+              </div>
+            </DoodleFrame>
           </motion.div>
 
-          <motion.a
-            href="#story"
-            className="inline-block bg-gradient-to-r from-mint-300 to-gentle-300 text-navy-800 px-12 py-4 rounded-full text-xl font-extrabold uppercase tracking-widest-em transition-all duration-300 shadow-lg hover:shadow-xl"
+          <motion.div
+            className="flex items-center justify-center gap-3"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.1 }}
-            whileHover={{
-              scale: 1.05,
-              y: -2,
-            }}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Discover our love story and wedding journey"
           >
-            DISCOVER OUR STORY
-          </motion.a>
+            <DoodleArrow className="w-12 h-6 text-mint-400" />
+            <motion.a
+              href="#story"
+              className="inline-block bg-gradient-to-r from-mint-300 to-gentle-300 text-navy-800 px-12 py-4 rounded-full text-xl font-handwritten uppercase tracking-widest-em transition-all duration-300 shadow-lg hover:shadow-xl transform -rotate-1"
+              whileHover={{
+                scale: 1.05,
+                y: -2,
+                rotate: 0
+              }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Discover our love story and wedding journey"
+            >
+              DISCOVER OUR STORY
+            </motion.a>
+            <DoodleArrow className="w-12 h-6 text-mint-400 scale-x-[-1]" />
+          </motion.div>
             </div>
       </section>
 
@@ -353,7 +370,11 @@ export default function HomePage() {
         id="story"
         className="py-8 relative"
         style={{
-          background: 'linear-gradient(180deg, #f3edea 0%, #f9f6f1 50%, #f7f5f2 100%)' // Love chapter - soft blush to peach transition
+          background: 'linear-gradient(180deg, #f3edea 0%, #f9f6f1 50%, #f7f5f2 100%)', // Love chapter - soft blush to peach transition
+          backgroundImage: `
+            radial-gradient(circle at 10% 20%, rgba(251, 191, 36, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 90% 80%, rgba(236, 72, 153, 0.05) 0%, transparent 50%)
+          `
         }}
       >
         {/* Cinematic Sectional Transition */}
@@ -365,23 +386,31 @@ export default function HomePage() {
           <ScrollReveal direction="up" className="text-center mb-16">
             {/* Desktop: Single line */}
             <div className="hidden md:block">
-              <StaggeredText
-                text="OUR LOVE STORY"
-                className="text-5xl md:text-6xl font-extrabold text-navy-800 mb-8 tracking-widest-em uppercase"
-                direction="up"
-              />
+              <div className="flex items-center justify-center gap-4 mb-8">
+                <DoodleHeart className="w-8 h-8 text-pink-400" />
+                <StaggeredText
+                  text="OUR LOVE STORY"
+                  className="text-5xl md:text-6xl font-handwritten text-navy-800 tracking-widest-em uppercase transform -rotate-1"
+                  direction="up"
+                />
+                <DoodleHeart className="w-8 h-8 text-pink-400" />
+            </div>
             </div>
             
             {/* Mobile: Two lines */}
             <div className="block md:hidden text-center mb-8">
-              <StaggeredText
-                text="OUR LOVE"
-                className="text-4xl font-extrabold text-navy-800 tracking-widest-em uppercase block"
-                direction="up"
-              />
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <DoodleHeart className="w-6 h-6 text-pink-400" />
+                <StaggeredText
+                  text="OUR LOVE"
+                  className="text-4xl font-handwritten text-navy-800 tracking-widest-em uppercase block transform -rotate-1"
+                  direction="up"
+                />
+                <DoodleHeart className="w-6 h-6 text-pink-400" />
+              </div>
               <StaggeredText
                 text="STORY"
-                className="text-4xl font-extrabold text-navy-800 tracking-widest-em uppercase block mt-2"
+                className="text-4xl font-handwritten text-navy-800 tracking-widest-em uppercase block transform rotate-1"
                 direction="up"
               />
             </div>
