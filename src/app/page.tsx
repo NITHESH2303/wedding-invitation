@@ -382,6 +382,9 @@ export default function HomePage() {
           clipPath: 'polygon(0 0, 100% 0, 100% 80%, 0 100%)'
         }}></div>
         
+        {/* Floating Doodles */}
+        <FloatingDoodles />
+        
         <div className="max-w-7xl mx-auto px-8 py-8">
           <ScrollReveal direction="up" className="text-center mb-16">
             {/* Desktop: Single line */}
@@ -458,6 +461,9 @@ export default function HomePage() {
         <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-blush-300 to-oat-300" style={{
           clipPath: 'polygon(0 0, 100% 0, 100% 80%, 0 100%)'
         }}></div>
+        
+        {/* Floating Doodles */}
+        <FloatingDoodles />
         
         <div className="max-w-4xl mx-auto px-8 py-8">
           <ScrollReveal direction="up" className="text-center mb-8">
@@ -605,6 +611,9 @@ export default function HomePage() {
           clipPath: 'polygon(0 0, 100% 0, 100% 80%, 0 100%)'
         }}></div>
         
+        {/* Floating Doodles */}
+        <FloatingDoodles />
+        
         <div className="max-w-4xl mx-auto px-8 py-8">
           <ScrollReveal direction="up" className="text-center mb-8">
             {/* Desktop: Single line */}
@@ -747,6 +756,9 @@ export default function HomePage() {
         <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-peach-300 to-blush-300" style={{
           clipPath: 'polygon(0 0, 100% 0, 100% 80%, 0 100%)'
         }}></div>
+        
+        {/* Floating Doodles */}
+        <FloatingDoodles />
         
         <div className="max-w-4xl mx-auto px-8 py-8">
           <ScrollReveal direction="up" className="text-center mb-8">
