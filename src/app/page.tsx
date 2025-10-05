@@ -74,10 +74,14 @@ export default function HomePage() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="fixed inset-0 bg-peach-300 z-40 flex flex-col items-center justify-center md:hidden"
+            className="fixed inset-0 bg-peach-300/95 backdrop-blur-md z-40 flex flex-col items-center justify-center md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            style={{
+              background: 'linear-gradient(135deg, rgba(251, 191, 36, 0.95) 0%, rgba(249, 246, 241, 0.95) 50%, rgba(243, 237, 234, 0.95) 100%)',
+              backdropFilter: 'blur(10px)'
+            }}
           >
             <nav className="flex flex-col items-center space-y-8">
               {["Home", "Story", "Events", "Couple", "RSVP"].map(
@@ -85,12 +89,13 @@ export default function HomePage() {
                   <motion.a
                     key={item}
                     href={`#${item.toLowerCase()}`}
-                    className="text-2xl text-navy-800 font-semibold"
+                    className="text-2xl text-navy-800 font-semibold px-6 py-3 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 transition-all duration-300"
                     onClick={() => setIsMenuOpen(false)}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                     whileHover={{ scale: 1.1, color: "#1e293b" }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     {item}
                   </motion.a>
