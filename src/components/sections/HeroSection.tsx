@@ -145,15 +145,6 @@ export default function HeroSection() {
               WEDDING CELEBRATION
             </p>
           </motion.div>
-          
-          <motion.p
-            className="text-xl md:text-2xl text-navy-600 font-medium leading-emotional"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0 }}
-          >
-            November 22nd & 23rd, 2025 • Namakkal, Tamil Nadu
-          </motion.p>
         </motion.div>
 
         {/* Event Details Banner */}
@@ -173,7 +164,7 @@ export default function HeroSection() {
                 <div className="w-5 h-5 text-yellow-500">⭐</div>
               </div>
               <div className="space-y-2 text-sm leading-emotional">
-                <p className="font-bold text-navy-700">November 22nd & 23rd, 2025</p>
+                <p className="text-lg font-bold text-navy-700">November 22nd & 23rd, 2025</p>
                 <p className="text-navy-600">Namakkal, Tamil Nadu</p>
               </div>
             </div>
@@ -208,11 +199,11 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.1 }}
         >
-          <AnimatedArrow direction="left" delay={1.3} />
+          <AnimatedArrow direction="right" delay={1.3} />
           <CTAButton href="#story">
             DISCOVER OUR STORY
           </CTAButton>
-          <AnimatedArrow direction="right" delay={1.3} />
+          <AnimatedArrow direction="left" delay={1.3} />
         </motion.div>
       </div>
     </section>

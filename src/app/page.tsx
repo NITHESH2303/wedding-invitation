@@ -72,7 +72,7 @@ export default function HomePage() {
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
-        {isMenuOpen && (
+      {isMenuOpen && (
           <motion.div
             className="fixed inset-0 bg-peach-300/95 backdrop-blur-md z-40 flex flex-col items-center justify-center md:hidden"
             initial={{ opacity: 0 }}
@@ -83,7 +83,7 @@ export default function HomePage() {
               backdropFilter: 'blur(10px)'
             }}
           >
-            <nav className="flex flex-col items-center space-y-8">
+          <nav className="flex flex-col items-center space-y-8">
               {["Home", "Story", "Events", "Couple", "RSVP"].map(
                 (item, index) => (
                   <motion.a
@@ -101,18 +101,17 @@ export default function HomePage() {
                   </motion.a>
                 )
               )}
-            </nav>
+          </nav>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Main Content */}
-      <HeroSection />
-      <LoveStorySection />
-      <EventsSection />
-      <CoupleSection />
-      <RSVPSection />
-      <FooterSection />
+              <HeroSection />
+              <LoveStorySection />
+              <EventsSection />
+              <CoupleSection />
+              <RSVPSection />
+              <FooterSection />
     </main>
   );
 }
