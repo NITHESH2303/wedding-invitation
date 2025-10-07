@@ -9,6 +9,7 @@ import LoveStorySection from "@/components/sections/LoveStorySection";
 import EventsSection from "@/components/sections/EventsSection";
 import CoupleSection from "@/components/sections/CoupleSection";
 import RSVPSection from "@/components/sections/RSVPSection";
+import VenueLocation from "@/components/sections/VenueLocation";
 import FooterSection from "@/components/sections/FooterSection";
 
 // Skeleton Loader
@@ -107,10 +108,11 @@ export default function HomePage() {
       </AnimatePresence>
 
               <HeroSection />
-              <LoveStorySection />
+              {/* <LoveStorySection /> */}
               <EventsSection />
               <CoupleSection />
               <RSVPSection />
+              <VenueLocation />
               <FooterSection />
     </main>
   );
