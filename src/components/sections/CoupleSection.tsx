@@ -140,22 +140,80 @@ export default function CoupleSection() {
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              {/* Floating doodles around Boobana's card */}
-              <motion.div
-                className="absolute -top-4 -right-4 z-10"
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <DoodleStar className="w-8 h-8 text-pink-400" />
-              </motion.div>
-              
-              <motion.div
-                className="absolute -bottom-2 -left-4 z-10"
-                animate={{ y: [0, -5, 0] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              >
-                <DoodleFlower className="w-10 h-10 text-purple-400" />
-              </motion.div>
+              {/* Fun doodles around Boobana's card - Mobile Responsive */}
+              <div className="absolute inset-0 pointer-events-none z-10">
+                {/* Desktop doodles */}
+                <motion.div
+                  className="hidden md:block absolute -top-4 -right-4"
+                  animate={{ y: [0, -8, 0], rotate: [0, 5, -5, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <Image
+                    src="/doodles/open-doodles/png/LovingDoodle.png"
+                    alt="Loving doodle"
+                    width={40}
+                    height={40}
+                    className="drop-shadow-lg"
+                  />
+                </motion.div>
+                
+                <motion.div
+                  className="hidden md:block absolute -bottom-2 -left-4"
+                  animate={{ y: [0, -6, 0], scale: [1, 1.1, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                >
+                  <Image
+                    src="/doodles/open-doodles/png/DancingDoodle.png"
+                    alt="Dancing doodle"
+                    width={50}
+                    height={50}
+                    className="drop-shadow-lg"
+                  />
+                </motion.div>
+                
+                <motion.div
+                  className="hidden md:block absolute top-8 -right-8"
+                  animate={{ y: [0, -10, 0], rotate: [0, 8, -8, 0] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                >
+                  <Image
+                    src="/doodles/open-doodles/png/SelfieDoodle.png"
+                    alt="Selfie doodle"
+                    width={35}
+                    height={35}
+                    className="drop-shadow-lg"
+                  />
+                </motion.div>
+                
+                {/* Mobile doodles - smaller and positioned away from content */}
+                <motion.div
+                  className="md:hidden absolute -top-2 -right-2"
+                  animate={{ y: [0, -4, 0], rotate: [0, 3, -3, 0] }}
+                  transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                >
+                  <Image
+                    src="/doodles/open-doodles/png/LovingDoodle.png"
+                    alt="Loving doodle"
+                    width={25}
+                    height={25}
+                    className="drop-shadow-lg"
+                  />
+                </motion.div>
+                
+                <motion.div
+                  className="md:hidden absolute -bottom-1 -left-2"
+                  animate={{ y: [0, -3, 0], scale: [1, 1.05, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                >
+                  <Image
+                    src="/doodles/open-doodles/png/DancingDoodle.png"
+                    alt="Dancing doodle"
+                    width={30}
+                    height={30}
+                    className="drop-shadow-lg"
+                  />
+                </motion.div>
+              </div>
 
               <DoodleFrame className="bg-gradient-to-r from-peach-200 to-blush-100 rounded-2xl p-6 shadow-xl relative overflow-hidden">
                 {/* Background floating hearts */}
@@ -170,20 +228,35 @@ export default function CoupleSection() {
                 <div className="text-center">
                   <div className="mb-4 relative">
                     <motion.div 
-                      className="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-pink-200 to-purple-200 flex items-center justify-center mb-4 relative overflow-hidden"
+                      className="w-40 h-40 mx-auto flex items-center justify-center mb-4 relative"
                       whileHover={{ scale: 1.05 }}
                       transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     >
-                      <Image
-                        src="/assests/boobana.png"
-                        alt="Boobana - The Beautiful Bride"
-                        width={128}
-                        height={128}
-                        className="rounded-full object-cover w-full h-full"
+                      {/* Soft glow background for transparent image */}
+                      <div 
+                        className="absolute inset-0 rounded-full"
+                        style={{
+                          background: 'radial-gradient(circle, rgba(244, 166, 199, 0.4) 0%, rgba(212, 165, 212, 0.3) 50%, transparent 100%)',
+                          filter: 'blur(12px)',
+                          transform: 'scale(1.3)'
+                        }}
                       />
+                      
+                      {/* Main image with proper background */}
+                      <div className="relative z-10 w-32 h-32 rounded-full overflow-hidden bg-gradient-to-br from-pink-100 to-purple-100 p-2">
+                        <Image
+                          src="/assests/boobana.png"
+                          alt="Boobana - The Beautiful Bride"
+                          width={120}
+                          height={120}
+                          className="object-contain w-full h-full"
+                          style={{ filter: 'drop-shadow(0 4px 16px rgba(244, 166, 199, 0.4))' }}
+                        />
+                      </div>
+                      
                       {/* Floating heart on photo */}
                       <motion.div
-                        className="absolute -top-2 -right-2"
+                        className="absolute -top-2 -right-2 z-20"
                         animate={{ scale: [1, 1.2, 1] }}
                         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                       >
@@ -224,22 +297,80 @@ export default function CoupleSection() {
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              {/* Floating doodles around Giri's card */}
-              <motion.div
-                className="absolute -top-4 -left-4 z-10"
-                animate={{ rotate: [0, -15, 15, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <DoodleStar className="w-8 h-8 text-blue-400" />
-              </motion.div>
-              
-              <motion.div
-                className="absolute -bottom-2 -right-4 z-10"
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              >
-                <DoodleFlower className="w-10 h-10 text-green-400" />
-              </motion.div>
+              {/* Fun doodles around Giri's card - Mobile Responsive */}
+              <div className="absolute inset-0 pointer-events-none z-10">
+                {/* Desktop doodles */}
+                <motion.div
+                  className="hidden md:block absolute -top-4 -left-4"
+                  animate={{ y: [0, -8, 0], rotate: [0, -5, 5, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <Image
+                    src="/doodles/open-doodles/png/ReadingDoodle.png"
+                    alt="Reading doodle"
+                    width={40}
+                    height={40}
+                    className="drop-shadow-lg"
+                  />
+                </motion.div>
+                
+                <motion.div
+                  className="hidden md:block absolute -bottom-2 -right-4"
+                  animate={{ y: [0, -6, 0], scale: [1, 1.1, 1] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                >
+                  <Image
+                    src="/doodles/open-doodles/png/SelfieDoodle.png"
+                    alt="Selfie doodle"
+                    width={50}
+                    height={50}
+                    className="drop-shadow-lg"
+                  />
+                </motion.div>
+                
+                <motion.div
+                  className="hidden md:block absolute top-8 -left-8"
+                  animate={{ y: [0, -10, 0], rotate: [0, 8, -8, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
+                >
+                  <Image
+                    src="/doodles/open-doodles/png/LovingDoodle.png"
+                    alt="Loving doodle"
+                    width={35}
+                    height={35}
+                    className="drop-shadow-lg"
+                  />
+                </motion.div>
+                
+                {/* Mobile doodles - smaller and positioned away from content */}
+                <motion.div
+                  className="md:hidden absolute -top-2 -left-2"
+                  animate={{ y: [0, -4, 0], rotate: [0, -3, 3, 0] }}
+                  transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                >
+                  <Image
+                    src="/doodles/open-doodles/png/ReadingDoodle.png"
+                    alt="Reading doodle"
+                    width={25}
+                    height={25}
+                    className="drop-shadow-lg"
+                  />
+                </motion.div>
+                
+                <motion.div
+                  className="md:hidden absolute -bottom-1 -right-2"
+                  animate={{ y: [0, -3, 0], scale: [1, 1.05, 1] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                >
+                  <Image
+                    src="/doodles/open-doodles/png/SelfieDoodle.png"
+                    alt="Selfie doodle"
+                    width={30}
+                    height={30}
+                    className="drop-shadow-lg"
+                  />
+                </motion.div>
+              </div>
 
               <DoodleFrame className="bg-gradient-to-r from-dusty-200 to-gentle-200 rounded-2xl p-6 shadow-xl relative overflow-hidden">
                 {/* Background floating stars */}
@@ -254,20 +385,35 @@ export default function CoupleSection() {
                 <div className="text-center">
                   <div className="mb-4 relative">
                     <motion.div 
-                      className="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-blue-200 to-green-200 flex items-center justify-center mb-4 relative overflow-hidden"
+                      className="w-40 h-40 mx-auto flex items-center justify-center mb-4 relative"
                       whileHover={{ scale: 1.05 }}
                       transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     >
-                      <Image
-                        src="/assests/giri.png"
-                        alt="Giri - The Handsome Groom"
-                        width={128}
-                        height={128}
-                        className="rounded-full object-cover w-full h-full"
+                      {/* Soft glow background for transparent image */}
+                      <div 
+                        className="absolute inset-0 rounded-full"
+                        style={{
+                          background: 'radial-gradient(circle, rgba(14, 165, 233, 0.4) 0%, rgba(16, 185, 129, 0.3) 50%, transparent 100%)',
+                          filter: 'blur(12px)',
+                          transform: 'scale(1.3)'
+                        }}
                       />
+                      
+                      {/* Main image with proper background */}
+                      <div className="relative z-10 w-32 h-32 rounded-full overflow-hidden bg-gradient-to-br from-blue-100 to-green-100 p-2">
+                        <Image
+                          src="/assests/giri.png"
+                          alt="Giri - The Handsome Groom"
+                          width={120}
+                          height={120}
+                          className="object-contain w-full h-full"
+                          style={{ filter: 'drop-shadow(0 4px 16px rgba(14, 165, 233, 0.4))' }}
+                        />
+                      </div>
+                      
                       {/* Floating star on photo */}
                       <motion.div
-                        className="absolute -top-2 -left-2"
+                        className="absolute -top-2 -left-2 z-20"
                         animate={{ rotate: [0, 360] }}
                         transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                       >

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import StaggeredText from "@/components/StaggeredText";
 import Timer from "@/components/countdown";
 import { FloatingDoodles } from "@/components/DoodleArt";
@@ -20,6 +21,94 @@ export default function HeroSection() {
       }}
     >
       <FloatingDoodles />
+
+      <div className="absolute inset-0 pointer-events-none z-10">
+        {/* Desktop doodles */}
+        <motion.div
+          className="hidden md:block absolute bottom-40 left-20"
+          animate={{ y: [0, -6, 0], scale: [1, 1.1, 1] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        >
+          <Image
+            src="/doodles/open-doodles/png/LovingDoodle.png"
+            alt="Loving Doodle"
+            width={45}
+            height={45}
+            className="drop-shadow-lg"
+          />
+        </motion.div>
+        
+        <motion.div
+          className="hidden md:block absolute bottom-32 right-12"
+          animate={{ y: [0, -12, 0], rotate: [0, 8, -8, 0] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+        >
+          <Image
+            src="/doodles/open-doodles/png/SelfieDoodle.png"
+            alt="Selfie doodle"
+            width={55}
+            height={55}
+            className="drop-shadow-lg"
+          />
+        </motion.div>
+
+        <motion.div
+          className="hidden md:block absolute top-1/2 left-1/4"
+          animate={{ y: [0, -8, 0], rotate: [0, 3, -3, 0] }}
+          transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        >
+          <Image
+            src="/doodles/open-doodles/png/ReadingDoodle.png"
+            alt="Reading doodle"
+            width={40}
+            height={40}
+            className="drop-shadow-lg"
+          />
+        </motion.div>
+        
+        <motion.div
+          className="hidden md:block absolute top-1/3 right-1/3"
+          animate={{ y: [0, -6, 0], scale: [1, 1.05, 1] }}
+          transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
+        >
+          <Image
+            src="/doodles/open-doodles/png/GroovyDoodle.png"
+            alt="Groovy doodle"
+            width={35}
+            height={35}
+            className="drop-shadow-lg"
+          />
+        </motion.div>
+        
+        {/* Mobile doodles - smaller and positioned away from content */}
+        <motion.div
+          className="md:hidden absolute top-4 right-4"
+          animate={{ y: [0, -4, 0], rotate: [0, 3, -3, 0] }}
+          transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        >
+          <Image
+            src="/doodles/open-doodles/png/LovingDoodle.png"
+            alt="Loving Doodle"
+            width={30}
+            height={30}
+            className="drop-shadow-lg"
+          />
+        </motion.div>
+        
+        <motion.div
+          className="md:hidden absolute bottom-4 left-4"
+          animate={{ y: [0, -5, 0], scale: [1, 1.05, 1] }}
+          transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
+        >
+          <Image
+            src="/doodles/open-doodles/png/ReadingDoodle.png"
+            alt="Reading doodle"
+            width={25}
+            height={25}
+            className="drop-shadow-lg"
+          />
+        </motion.div>
+      </div>
       
       <div className="absolute inset-0">
         <motion.div

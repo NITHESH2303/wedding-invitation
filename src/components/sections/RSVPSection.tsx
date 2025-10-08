@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import StaggeredText from "@/components/StaggeredText";
 import ScrollReveal from "@/components/ScrollReveal";
 import { DoodleFlower, DoodleFrame } from "@/components/DoodleArt";
@@ -23,9 +24,109 @@ export default function RSVPSection() {
       <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-blush-300 to-oat-300" style={{
         clipPath: 'polygon(0 0, 100% 0, 100% 80%, 0 100%)'
       }}></div>
-      
-      {/* Floating Doodles */}
+
       <FloatingDoodles />
+
+      <div className="absolute inset-0 pointer-events-none z-10">
+        <motion.div
+          className="absolute top-20 left-8"
+          animate={{ y: [0, -10, 0], rotate: [0, 5, -5, 0] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <Image
+            src="/doodles/open-doodles/png/DancingDoodle.png"
+            alt="Dancing doodle"
+            width={60}
+            height={60}
+            className="drop-shadow-lg"
+          />
+        </motion.div>
+        
+        <motion.div
+          className="absolute top-32 right-12"
+          animate={{ y: [0, -8, 0], scale: [1, 1.1, 1] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        >
+          <Image
+            src="/doodles/open-doodles/png/GroovyDoodle.png"
+            alt="Groovy doodle"
+            width={55}
+            height={55}
+            className="drop-shadow-lg"
+          />
+        </motion.div>
+        
+        <motion.div
+          className="absolute bottom-40 left-16"
+          animate={{ y: [0, -6, 0], rotate: [0, -3, 3, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        >
+          <Image
+            src="/doodles/open-doodles/png/IceCreamDoodle.png"
+            alt="Ice cream doodle"
+            width={50}
+            height={50}
+            className="drop-shadow-lg"
+          />
+        </motion.div>
+        
+        <motion.div
+          className="absolute bottom-32 right-8"
+          animate={{ y: [0, -12, 0], rotate: [0, 8, -8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+        >
+          <Image
+            src="/doodles/open-doodles/png/SelfieDoodle.png"
+            alt="Selfie doodle"
+            width={65}
+            height={65}
+            className="drop-shadow-lg"
+          />
+        </motion.div>
+        
+        {/* Add more fun doodles from assets */}
+        <motion.div
+          className="absolute top-1/2 left-1/4"
+          animate={{ y: [0, -8, 0], rotate: [0, 3, -3, 0] }}
+          transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        >
+          <Image
+            src="/doodles/open-doodles/png/LovingDoodle.png"
+            alt="Loving doodle"
+            width={45}
+            height={45}
+            className="drop-shadow-lg"
+          />
+        </motion.div>
+        
+        <motion.div
+          className="absolute top-1/3 right-1/3"
+          animate={{ y: [0, -6, 0], scale: [1, 1.05, 1] }}
+          transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
+        >
+          <Image
+            src="/doodles/open-doodles/png/ReadingDoodle.png"
+            alt="Reading doodle"
+            width={40}
+            height={40}
+            className="drop-shadow-lg"
+          />
+        </motion.div>
+        
+        <motion.div
+          className="absolute bottom-1/3 left-1/3"
+          animate={{ y: [0, -7, 0], rotate: [0, -4, 4, 0] }}
+          transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: 1.8 }}
+        >
+          <Image
+            src="/doodles/open-doodles/png/CoffeeDoddle.png"
+            alt="Coffee doodle"
+            width={35}
+            height={35}
+            className="drop-shadow-lg"
+          />
+        </motion.div>
+      </div>
       
       <div className="max-w-4xl mx-auto px-8 py-8">
         <ScrollReveal direction="up" className="text-center mb-8" once={false}>
@@ -135,7 +236,7 @@ export default function RSVPSection() {
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  📅 Add to Google Calendar
+                  📅 Add to Calendar
                 </motion.a>
               </form>
             </DoodleFrame>
