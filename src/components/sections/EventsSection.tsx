@@ -29,7 +29,6 @@ export default function EventsSection() {
       
       <div className="max-w-4xl mx-auto px-8 py-8">
         <ScrollReveal direction="up" className="text-center mb-8" once={false}>
-          {/* Desktop: Single line */}
           <div className="hidden md:block">
             <div className="flex items-center justify-center gap-4 mb-8">
               <DoodleStar className="w-8 h-8 text-yellow-400" />
@@ -42,8 +41,7 @@ export default function EventsSection() {
               <DoodleStar className="w-8 h-8 text-yellow-400" />
             </div>
           </div>
-          
-          {/* Mobile: Two lines */}
+
           <div className="block md:hidden text-center mb-8">
             <div className="flex items-center justify-center gap-2 mb-4">
               <DoodleStar className="w-6 h-6 text-yellow-400" />
@@ -76,7 +74,6 @@ export default function EventsSection() {
         </ScrollReveal>
 
         <div className="grid lg:grid-cols-2 gap-8">
-          {/* Reception Card */}
           <motion.div
             className="max-w-md mx-auto relative"
             initial={{ opacity: 0, x: -50 }}
@@ -116,7 +113,6 @@ export default function EventsSection() {
             </DoodleFrame>
           </motion.div>
 
-          {/* Wedding Card */}
           <motion.div
             className="max-w-md mx-auto relative"
             initial={{ opacity: 0, x: 50 }}

@@ -23,7 +23,6 @@ export default function HeroSection() {
       <FloatingDoodles />
 
       <div className="absolute inset-0 pointer-events-none z-10">
-        {/* Desktop doodles */}
         <motion.div
           className="hidden md:block absolute bottom-40 left-20"
           animate={{ y: [0, -6, 0], scale: [1, 1.1, 1] }}
@@ -79,8 +78,7 @@ export default function HeroSection() {
             className="drop-shadow-lg"
           />
         </motion.div>
-        
-        {/* Mobile doodles - smaller and positioned away from content */}
+
         <motion.div
           className="md:hidden absolute top-4 right-4"
           animate={{ y: [0, -4, 0], rotate: [0, 3, -3, 0] }}
@@ -260,7 +258,6 @@ export default function HeroSection() {
           </div>
         </motion.div>
 
-        {/* Countdown Section */}
         <motion.div
           className="mb-8 max-w-md mx-auto"
           initial={{ opacity: 0, y: 30 }}

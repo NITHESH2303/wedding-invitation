@@ -29,7 +29,6 @@ export default function CoupleSection() {
       
       <div className="max-w-4xl mx-auto px-8 py-8">
         <ScrollReveal direction="up" className="text-center mb-8" once={false}>
-          {/* Desktop: Single line */}
           <div className="hidden md:block">
             <div className="flex items-center justify-center gap-4 mb-8 relative">
               <motion.div
@@ -46,7 +45,6 @@ export default function CoupleSection() {
                   direction="up"
                   once={false}
                 />
-                {/* Floating doodles around title */}
                 <motion.div
                   className="absolute -top-6 -right-8"
                   animate={{ y: [0, -5, 0] }}
@@ -71,8 +69,7 @@ export default function CoupleSection() {
               </motion.div>
             </div>
           </div>
-          
-          {/* Mobile: Two lines */}
+
           <div className="block md:hidden text-center mb-8 relative">
             <div className="flex items-center justify-center gap-2 mb-4">
               <motion.div
@@ -101,7 +98,6 @@ export default function CoupleSection() {
                 direction="up"
                 once={false}
               />
-              {/* Mobile floating doodles */}
               <motion.div
                 className="absolute -top-4 -right-4"
                 animate={{ y: [0, -3, 0] }}
@@ -132,7 +128,6 @@ export default function CoupleSection() {
         </ScrollReveal>
 
         <div className="grid lg:grid-cols-2 gap-8">
-          {/* Boobana Card */}
           <ScrollReveal direction="left" delay={0.2} once={false}>
             <motion.div
               className="max-w-md mx-auto relative"
@@ -140,54 +135,9 @@ export default function CoupleSection() {
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              {/* Fun doodles around Boobana's card - Mobile Responsive */}
               <div className="absolute inset-0 pointer-events-none z-10">
-                {/* Desktop doodles */}
                 <motion.div
-                  className="hidden md:block absolute -top-4 -right-4"
-                  animate={{ y: [0, -8, 0], rotate: [0, 5, -5, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <Image
-                    src="/doodles/open-doodles/png/LovingDoodle.png"
-                    alt="Loving doodle"
-                    width={40}
-                    height={40}
-                    className="drop-shadow-lg"
-                  />
-                </motion.div>
-                
-                <motion.div
-                  className="hidden md:block absolute -bottom-2 -left-4"
-                  animate={{ y: [0, -6, 0], scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                >
-                  <Image
-                    src="/doodles/open-doodles/png/DancingDoodle.png"
-                    alt="Dancing doodle"
-                    width={50}
-                    height={50}
-                    className="drop-shadow-lg"
-                  />
-                </motion.div>
-                
-                <motion.div
-                  className="hidden md:block absolute top-8 -right-8"
-                  animate={{ y: [0, -10, 0], rotate: [0, 8, -8, 0] }}
-                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                >
-                  <Image
-                    src="/doodles/open-doodles/png/SelfieDoodle.png"
-                    alt="Selfie doodle"
-                    width={35}
-                    height={35}
-                    className="drop-shadow-lg"
-                  />
-                </motion.div>
-                
-                {/* Mobile doodles - smaller and positioned away from content */}
-                <motion.div
-                  className="md:hidden absolute -top-2 -right-2"
+                  className="absolute -top-2 -right-2"
                   animate={{ y: [0, -4, 0], rotate: [0, 3, -3, 0] }}
                   transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
                 >
@@ -201,22 +151,21 @@ export default function CoupleSection() {
                 </motion.div>
                 
                 <motion.div
-                  className="md:hidden absolute -bottom-1 -left-2"
+                  className="absolute -bottom-1 -left-2"
                   animate={{ y: [0, -3, 0], scale: [1, 1.05, 1] }}
                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                 >
                   <Image
                     src="/doodles/open-doodles/png/DancingDoodle.png"
                     alt="Dancing doodle"
-                    width={30}
-                    height={30}
+                    width={28}
+                    height={28}
                     className="drop-shadow-lg"
                   />
                 </motion.div>
               </div>
 
               <DoodleFrame className="bg-gradient-to-r from-peach-200 to-blush-100 rounded-2xl p-6 shadow-xl relative overflow-hidden">
-                {/* Background floating hearts */}
                 <motion.div
                   className="absolute top-2 right-2 opacity-20"
                   animate={{ rotate: [0, 360] }}
@@ -232,7 +181,6 @@ export default function CoupleSection() {
                       whileHover={{ scale: 1.05 }}
                       transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     >
-                      {/* Soft glow background for transparent image */}
                       <div 
                         className="absolute inset-0 rounded-full"
                         style={{
@@ -241,20 +189,18 @@ export default function CoupleSection() {
                           transform: 'scale(1.3)'
                         }}
                       />
-                      
-                      {/* Main image with proper background */}
+
                       <div className="relative z-10 w-32 h-32 rounded-full overflow-hidden bg-gradient-to-br from-pink-100 to-purple-100 p-2">
                         <Image
                           src="/assests/boobana.png"
-                          alt="Boobana - The Beautiful Bride"
+                          alt="The Bride"
                           width={120}
                           height={120}
                           className="object-contain w-full h-full"
                           style={{ filter: 'drop-shadow(0 4px 16px rgba(244, 166, 199, 0.4))' }}
                         />
                       </div>
-                      
-                      {/* Floating heart on photo */}
+
                       <motion.div
                         className="absolute -top-2 -right-2 z-20"
                         animate={{ scale: [1, 1.2, 1] }}
@@ -289,7 +235,6 @@ export default function CoupleSection() {
             </motion.div>
           </ScrollReveal>
 
-          {/* Giri Card */}
           <ScrollReveal direction="right" delay={0.4} once={false}>
             <motion.div
               className="max-w-md mx-auto relative"
@@ -297,54 +242,9 @@ export default function CoupleSection() {
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              {/* Fun doodles around Giri's card - Mobile Responsive */}
               <div className="absolute inset-0 pointer-events-none z-10">
-                {/* Desktop doodles */}
                 <motion.div
-                  className="hidden md:block absolute -top-4 -left-4"
-                  animate={{ y: [0, -8, 0], rotate: [0, -5, 5, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <Image
-                    src="/doodles/open-doodles/png/ReadingDoodle.png"
-                    alt="Reading doodle"
-                    width={40}
-                    height={40}
-                    className="drop-shadow-lg"
-                  />
-                </motion.div>
-                
-                <motion.div
-                  className="hidden md:block absolute -bottom-2 -right-4"
-                  animate={{ y: [0, -6, 0], scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                >
-                  <Image
-                    src="/doodles/open-doodles/png/SelfieDoodle.png"
-                    alt="Selfie doodle"
-                    width={50}
-                    height={50}
-                    className="drop-shadow-lg"
-                  />
-                </motion.div>
-                
-                <motion.div
-                  className="hidden md:block absolute top-8 -left-8"
-                  animate={{ y: [0, -10, 0], rotate: [0, 8, -8, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
-                >
-                  <Image
-                    src="/doodles/open-doodles/png/LovingDoodle.png"
-                    alt="Loving doodle"
-                    width={35}
-                    height={35}
-                    className="drop-shadow-lg"
-                  />
-                </motion.div>
-                
-                {/* Mobile doodles - smaller and positioned away from content */}
-                <motion.div
-                  className="md:hidden absolute -top-2 -left-2"
+                  className="absolute -top-2 -left-2"
                   animate={{ y: [0, -4, 0], rotate: [0, -3, 3, 0] }}
                   transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
                 >
@@ -358,22 +258,21 @@ export default function CoupleSection() {
                 </motion.div>
                 
                 <motion.div
-                  className="md:hidden absolute -bottom-1 -right-2"
+                  className="absolute -bottom-1 -right-2"
                   animate={{ y: [0, -3, 0], scale: [1, 1.05, 1] }}
                   transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
                 >
                   <Image
                     src="/doodles/open-doodles/png/SelfieDoodle.png"
                     alt="Selfie doodle"
-                    width={30}
-                    height={30}
+                    width={28}
+                    height={28}
                     className="drop-shadow-lg"
                   />
                 </motion.div>
               </div>
 
               <DoodleFrame className="bg-gradient-to-r from-dusty-200 to-gentle-200 rounded-2xl p-6 shadow-xl relative overflow-hidden">
-                {/* Background floating stars */}
                 <motion.div
                   className="absolute top-2 left-2 opacity-20"
                   animate={{ rotate: [0, -360] }}
@@ -389,7 +288,7 @@ export default function CoupleSection() {
                       whileHover={{ scale: 1.05 }}
                       transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     >
-                      {/* Soft glow background for transparent image */}
+
                       <div 
                         className="absolute inset-0 rounded-full"
                         style={{
@@ -398,8 +297,7 @@ export default function CoupleSection() {
                           transform: 'scale(1.3)'
                         }}
                       />
-                      
-                      {/* Main image with proper background */}
+
                       <div className="relative z-10 w-32 h-32 rounded-full overflow-hidden bg-gradient-to-br from-blue-100 to-green-100 p-2">
                         <Image
                           src="/assests/giri.png"
@@ -410,8 +308,7 @@ export default function CoupleSection() {
                           style={{ filter: 'drop-shadow(0 4px 16px rgba(14, 165, 233, 0.4))' }}
                         />
                       </div>
-                      
-                      {/* Floating star on photo */}
+
                       <motion.div
                         className="absolute -top-2 -left-2 z-20"
                         animate={{ rotate: [0, 360] }}

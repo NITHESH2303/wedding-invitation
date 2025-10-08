@@ -29,100 +29,100 @@ export default function RSVPSection() {
 
       <div className="absolute inset-0 pointer-events-none z-10">
         <motion.div
-          className="absolute top-20 left-8"
-          animate={{ y: [0, -10, 0], rotate: [0, 5, -5, 0] }}
+          className="absolute top-4 right-4"
+          animate={{ y: [0, -5, 0], rotate: [0, 3, -3, 0] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         >
           <Image
             src="/doodles/open-doodles/png/DancingDoodle.png"
             alt="Dancing doodle"
-            width={60}
-            height={60}
+            width={35}
+            height={35}
             className="drop-shadow-lg"
           />
         </motion.div>
         
         <motion.div
-          className="absolute top-32 right-12"
-          animate={{ y: [0, -8, 0], scale: [1, 1.1, 1] }}
+          className="absolute bottom-4 left-4"
+          animate={{ y: [0, -4, 0], scale: [1, 1.05, 1] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         >
           <Image
             src="/doodles/open-doodles/png/GroovyDoodle.png"
             alt="Groovy doodle"
-            width={55}
-            height={55}
+            width={30}
+            height={30}
             className="drop-shadow-lg"
           />
         </motion.div>
         
         <motion.div
-          className="absolute bottom-40 left-16"
-          animate={{ y: [0, -6, 0], rotate: [0, -3, 3, 0] }}
+          className="absolute top-1/2 right-2"
+          animate={{ y: [0, -3, 0], rotate: [0, -2, 2, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
         >
           <Image
             src="/doodles/open-doodles/png/IceCreamDoodle.png"
             alt="Ice cream doodle"
-            width={50}
-            height={50}
+            width={28}
+            height={28}
             className="drop-shadow-lg"
           />
         </motion.div>
         
         <motion.div
-          className="absolute bottom-32 right-8"
-          animate={{ y: [0, -12, 0], rotate: [0, 8, -8, 0] }}
+          className="absolute bottom-1/3 left-2"
+          animate={{ y: [0, -6, 0], rotate: [0, 4, -4, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
         >
           <Image
             src="/doodles/open-doodles/png/SelfieDoodle.png"
             alt="Selfie doodle"
-            width={65}
-            height={65}
+            width={32}
+            height={32}
             className="drop-shadow-lg"
           />
         </motion.div>
         
-        {/* Add more fun doodles from assets */}
+        {/* Add more fun doodles from assets - positioned away from content */}
         <motion.div
-          className="absolute top-1/2 left-1/4"
-          animate={{ y: [0, -8, 0], rotate: [0, 3, -3, 0] }}
+          className="absolute top-1/4 left-2"
+          animate={{ y: [0, -4, 0], rotate: [0, 2, -2, 0] }}
           transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
         >
           <Image
             src="/doodles/open-doodles/png/LovingDoodle.png"
             alt="Loving doodle"
-            width={45}
-            height={45}
+            width={25}
+            height={25}
             className="drop-shadow-lg"
           />
         </motion.div>
         
         <motion.div
-          className="absolute top-1/3 right-1/3"
-          animate={{ y: [0, -6, 0], scale: [1, 1.05, 1] }}
+          className="absolute top-1/3 right-2"
+          animate={{ y: [0, -3, 0], scale: [1, 1.03, 1] }}
           transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
         >
           <Image
             src="/doodles/open-doodles/png/ReadingDoodle.png"
             alt="Reading doodle"
-            width={40}
-            height={40}
+            width={22}
+            height={22}
             className="drop-shadow-lg"
           />
         </motion.div>
         
         <motion.div
-          className="absolute bottom-1/3 left-1/3"
-          animate={{ y: [0, -7, 0], rotate: [0, -4, 4, 0] }}
+          className="absolute bottom-1/4 right-2"
+          animate={{ y: [0, -4, 0], rotate: [0, -3, 3, 0] }}
           transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: 1.8 }}
         >
           <Image
             src="/doodles/open-doodles/png/CoffeeDoddle.png"
             alt="Coffee doodle"
-            width={35}
-            height={35}
+            width={26}
+            height={26}
             className="drop-shadow-lg"
           />
         </motion.div>
@@ -171,6 +171,31 @@ export default function RSVPSection() {
             <p className="text-lg md:text-xl text-navy-600 leading-emotional max-w-3xl mx-auto mb-8 font-script">
               We&apos;d love to celebrate with you! Please let us know if you&apos;ll be joining us for our special day.
             </p>
+          </motion.div>
+          
+          {/* Final Fest Image - Responsive with Cropping */}
+          <motion.div
+            className="flex justify-center mb-8"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
+          >
+            <div className="w-44 h-48 overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <Image
+                src="/assests/final_fest.png"
+                alt="Final Fest Celebration"
+                width={250}
+                height={200}
+                className="w-full h-full"
+                style={{
+                  objectFit: 'cover',
+                  objectPosition: 'center 60%',
+                  filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1))',
+                  transform: 'scale(1.2)',
+                  transformOrigin: 'center'
+                }}
+              />
+            </div>
           </motion.div>
         </ScrollReveal>
 

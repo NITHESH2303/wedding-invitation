@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { DoodleFrame } from "@/components/DoodleArt";
 import { FloatDoodle, SelfieDoodle, CoffeeDoodle, ReadingDoodle } from "@/components/OpenDoodles";
 
-// Animated Arrow Component
 export const AnimatedArrow = ({ 
   direction = "right", 
   className = "", 
@@ -46,7 +45,6 @@ export const AnimatedArrow = ({
   </motion.div>
 );
 
-// Section Header Component
 export const SectionHeader = ({ 
   title, 
   subtitle, 
@@ -74,7 +72,6 @@ export const SectionHeader = ({
   </div>
 );
 
-// Card Component with Doodle Decorations
 export const DoodleCard = ({ 
   children, 
   className = "", 
@@ -97,7 +94,6 @@ export const DoodleCard = ({
   </div>
 );
 
-// Floating Doodles Background
 export const FloatingDoodlesBackground = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
     <FloatDoodle 
@@ -127,7 +123,6 @@ export const FloatingDoodlesBackground = () => (
   </div>
 );
 
-// CTA Button Component
 export const CTAButton = ({ 
   href, 
   children, 
