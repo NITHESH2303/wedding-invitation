@@ -46,7 +46,7 @@ export const DoodleStar = ({ className = "w-5 h-5 text-yellow-400", animate = tr
   </motion.svg>
 );
 
-// Flower Doodle
+// Sparkle Doodle - Cool geometric sparkle
 export const DoodleFlower = ({ className = "w-8 h-8 text-pink-300", animate = true, delay = 0 }: DoodleArtProps) => (
   <motion.svg 
     className={className} 
@@ -57,9 +57,10 @@ export const DoodleFlower = ({ className = "w-8 h-8 text-pink-300", animate = tr
     transition={{ duration: 0.6, delay }}
   >
     <path 
-      d="M12,2C13.1,2 14,2.9 14,4C14,5.1 13.1,6 12,6C10.9,6 10,5.1 10,4C10,2.9 10.9,2 12,2M21,9C21,10.1 20.1,11 19,11C17.9,11 17,10.1 17,9C17,7.9 17.9,7 19,7C20.1,7 21,7.9 21,9M3,9C3,10.1 3.9,11 5,11C6.1,11 7,10.1 7,9C7,7.9 6.1,7 5,7C3.9,7 3,7.9 3,9M12,18C13.1,18 14,18.9 14,20C14,21.1 13.1,22 12,22C10.9,22 10,21.1 10,20C10,18.9 10.9,18 12,18M12,8C13.1,8 14,8.9 14,10C14,11.1 13.1,12 12,12C10.9,12 10,11.1 10,10C10,8.9 10.9,8 12,8Z"
+      d="M12,2l2.5,7.5L22,12l-7.5,2.5L12,22l-2.5-7.5L2,12l7.5-2.5L12,2z M12,6l1.5,4.5L18,12l-4.5,1.5L12,18l-1.5-4.5L6,12l4.5-1.5L12,6z"
       fill="currentColor"
     />
+    <circle cx="12" cy="12" r="1.5" fill="currentColor" opacity="0.8"/>
   </motion.svg>
 );
 

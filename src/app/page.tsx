@@ -120,7 +120,7 @@ export default function HomePage() {
       </AnimatePresence>
 
               <HeroSection />
-              {/* <LoveStorySection /> */}
+              <LoveStorySection />
               <EventsSection />
               <CoupleSection />
               <RSVPSection />
