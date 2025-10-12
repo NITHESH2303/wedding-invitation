@@ -28,7 +28,7 @@ export default function VenueLocation() {
 
         <div className="text-center">
           <motion.a
-            href="https://maps.google.com/maps/dir/?api=1&destination=11.208682871210893,78.13609542877394"
+            href="https://maps.google.com/maps/dir/?api=1&destination=11.208191334234352,78.13505783530405"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-gradient-to-r from-mint-300 via-gentle-300 to-blush-300 hover:from-mint-400 hover:via-gentle-400 hover:to-blush-400 text-navy-800 font-extrabold rounded-full px-8 py-4 text-lg transition-all duration-300 shadow-lg"

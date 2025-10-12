@@ -129,6 +129,19 @@ export default function LoveStorySection() {
     sectionHeight: 0
   });
 
+  // Preload all story images on mount to prevent reloading
+  useEffect(() => {
+    storyEvents.forEach((event) => {
+      if (event.doodleImage && !event.doodleImage.endsWith('.mp4')) {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = event.doodleImage;
+        document.head.appendChild(link);
+      }
+    });
+  }, []);
+
   // Track card state based on scroll progress
   const [showCard, setShowCard] = useState(false);
 
@@ -530,6 +543,8 @@ export default function LoveStorySection() {
                           width={storyEvents[currentCardIndex]?.imageWidth || 300}
                           height={storyEvents[currentCardIndex]?.imageHeight || 200}
                           className="max-w-full max-h-full object-contain rounded-xl"
+                          priority={currentCardIndex < 2}
+                          loading="eager"
                         />
                       )}
                     </motion.div>
@@ -595,6 +610,8 @@ export default function LoveStorySection() {
                           width={storyEvents[currentCardIndex]?.imageWidth || 300}
                           height={storyEvents[currentCardIndex]?.imageHeight || 200}
                           className="max-w-full max-h-full object-contain rounded-xl"
+                          priority={currentCardIndex < 2}
+                          loading="eager"
                         />
                       )}
                     </div>
@@ -603,7 +620,7 @@ export default function LoveStorySection() {
               )}
 
               {/* Enhanced gradient overlay with consistent colors */}
-              <motion.div 
+              <motion.div
                 className="absolute inset-0 rounded-3xl opacity-5 bg-gradient-to-br from-peach-200 to-oat-200"
                 animate={{
                   opacity: [0.05, 0.15, 0.05],
