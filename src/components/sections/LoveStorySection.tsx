@@ -365,6 +365,22 @@ export default function LoveStorySection() {
         </div>
       )}
 
+      <div className="fixed opacity-0 pointer-events-none" aria-hidden="true">
+        {storyEvents.map((event, idx) => (
+          !event.doodleImage.endsWith('.mp4') && (
+            <Image
+              key={idx}
+              src={event.doodleImage}
+              alt={event.doodleAlt}
+              width={event.imageWidth || 300}
+              height={event.imageHeight || 200}
+              priority={true}
+              loading="eager"
+            />
+          )
+        ))}
+      </div>
+
       {/* Single Stacked Card - Changes content on scroll */}
       {showCard && (
         <>
