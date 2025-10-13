@@ -224,11 +224,11 @@ export default function LoveStorySection() {
       <div 
         className="absolute inset-0 opacity-20 pointer-events-none"
         style={{
-          backgroundImage: `
-            radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.05) 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, rgba(255, 180, 220, 0.06) 0%, transparent 50%),
-            radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.05) 0%, transparent 50%),
-            linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.08) 50%, transparent 70%),
+           backgroundImage: `
+             radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
+             radial-gradient(circle at 80% 20%, rgba(255, 180, 220, 0.18) 0%, transparent 50%),
+             radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.15) 0%, transparent 50%),
+             linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.12) 50%, transparent 70%),
             repeating-linear-gradient(
               90deg,
               transparent,
@@ -248,6 +248,24 @@ export default function LoveStorySection() {
           backgroundPosition: '0 0, 0 0, 0 0, 0 0, 0 0, 0 0'
         }}
       />
+
+
+         {/* Subtle Paper/Fabric Texture */}
+         <div 
+            className="absolute inset-0 opacity-2 pointer-events-none"
+            style={{
+              backgroundImage: `
+                radial-gradient(circle at 20% 20%, rgba(139, 69, 19, 0.1) 0%, transparent 10%),
+                radial-gradient(circle at 80% 80%, rgba(160, 82, 45, 0.08) 0%, transparent 10%),
+                radial-gradient(circle at 40% 60%, rgba(139, 69, 19, 0.06) 0%, transparent 15%),
+                linear-gradient(45deg, transparent 40%, rgba(139, 69, 19, 0.03) 50%, transparent 25%),
+                linear-gradient(-45deg, transparent 30%, rgba(160, 82, 45, 0.04) 50%, transparent 30%)
+              `,
+              backgroundSize:   '200px 200px, 300px 300px, 150px 150px, 100px 100px, 80px 80px',
+              backgroundPosition: '0 0, 50px 50px, 25px 25px, 0 0, 40px 40px',
+              backgroundRepeat: 'repeat'
+            }}
+          />
 
       {/* Regular section content when card is not active */}
       {!showCard && (

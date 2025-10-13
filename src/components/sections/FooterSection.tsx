@@ -80,7 +80,7 @@ export default function FooterSection() {
                     animate={{ opacity: [0.4, 1, 0.4] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                   >
-                    👆 Tap me!
+                    👇🏻 Tap me!
                   </motion.span>
                 </motion.a>
                 <div className="flex items-center gap-3">
