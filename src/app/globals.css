@@ -153,3 +153,21 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Mobile scroll fixes */
+@media (hover: none) and (pointer: coarse) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  
+  body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+  }
+  
+  /* Prevent any scroll snapping on mobile */
+  * {
+    scroll-snap-type: none !important;
+    scroll-snap-align: none !important;
+  }
+}

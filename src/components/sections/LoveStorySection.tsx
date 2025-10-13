@@ -62,8 +62,8 @@ const storyEvents: StoryEvent[] = [
     bgColor: "linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #ecfeff 100%)",
     imageWidth: 300,
     imageHeight: 180,
-    imagePosition: 'right',
-    imageLayout: 'side-by-side'
+    imagePosition: 'bottom',
+    imageLayout: 'centered'
   },
   {
     id: 4,
@@ -102,10 +102,10 @@ const storyEvents: StoryEvent[] = [
     doodleImage: "/assests/proposal.png", 
     doodleAlt: "Adventure partners",
     bgColor: "linear-gradient(135deg, #f5f3ff 0%, #ede9fe 50%, #e0e7ff 100%)",
-    imageWidth: 350,
-    imageHeight: 250,
-    imagePosition: 'left',
-    imageLayout: 'side-by-side'
+    imageWidth: 300,
+    imageHeight: 200,
+    imagePosition: 'bottom',
+    imageLayout: 'centered'
   },
   { 
     id: 7,
@@ -129,7 +129,6 @@ export default function LoveStorySection() {
     sectionHeight: 0
   });
 
-  // Preload all story images on mount to prevent reloading
   useEffect(() => {
     storyEvents.forEach((event) => {
       if (event.doodleImage && !event.doodleImage.endsWith('.mp4')) {
@@ -138,18 +137,17 @@ export default function LoveStorySection() {
         link.as = 'image';
         link.href = event.doodleImage;
         document.head.appendChild(link);
+        const img = new window.Image();
+        img.src = event.doodleImage;
       }
     });
   }, []);
 
-  // Track card state based on scroll progress
   const [showCard, setShowCard] = useState(false);
 
-  // Mouse position for interactive doodles
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  
-  // Transform mouse position for interactive doodles
+
   const mouseTransformX = useTransform(mouseX, [0, typeof window !== 'undefined' ? window.innerWidth : 1200], [-50, 50]);
   const mouseTransformY = useTransform(mouseY, [0, typeof window !== 'undefined' ? window.innerHeight : 800], [-30, 30]);
 
@@ -158,11 +156,11 @@ export default function LoveStorySection() {
     offset: ["start start", "end start"]
   });
 
-  // Calculate section height for scroll
   useEffect(() => {
     const calculateDimensions = () => {
-      const multiplier = window.innerWidth < 640 ? 3 : 2;
-      const sectionHeight = window.innerHeight * storyEvents.length * multiplier;
+      const multiplier = window.innerWidth < 640 ? 1.8 : 2;
+      const bufferSpace = window.innerHeight * 0.35;
+      const sectionHeight = (window.innerHeight * storyEvents.length * multiplier) + bufferSpace;
 
       setDimensions({
         sectionHeight
@@ -187,11 +185,14 @@ export default function LoveStorySection() {
 
   useEffect(() => {
     const unsubscribe = scrollYProgress.on("change", (progress) => {
-      // Card appears at 10% and disappears at 95% to give last card more time
-      const shouldShow = progress > 0.10 && progress < 0.98;
+      const shouldShow = progress > 0.07 && progress < 0.90;
       setShowCard(shouldShow);
 
-      const cardProgress = progress * storyEvents.length;
+      const activeStart = 0.07;
+      const activeEnd = 0.90;
+      const activeRange = activeEnd - activeStart;
+      const adjustedProgress = Math.max(0, Math.min(1, (progress - activeStart) / activeRange));
+      const cardProgress = adjustedProgress * storyEvents.length;
       const cardIndex = Math.floor(cardProgress);
       const clampedIndex = Math.min(Math.max(cardIndex, 0), storyEvents.length - 1);
       setCurrentCardIndex(clampedIndex);
@@ -219,6 +220,34 @@ export default function LoveStorySection() {
         background: sectionBackground,
       }}
     >
+      {/* Paper texture background overlay */}
+      <div 
+        className="absolute inset-0 opacity-20 pointer-events-none"
+        style={{
+          backgroundImage: `
+            radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(255, 180, 220, 0.06) 0%, transparent 50%),
+            radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.05) 0%, transparent 50%),
+            linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.08) 50%, transparent 70%),
+            repeating-linear-gradient(
+              90deg,
+              transparent,
+              transparent 2px,
+              rgba(255, 255, 255, 0.02) 2px,
+              rgba(255, 255, 255, 0.02) 4px
+            ),
+            repeating-linear-gradient(
+              0deg,
+              transparent,
+              transparent 2px,
+              rgba(255, 255, 255, 0.015) 2px,
+              rgba(255, 255, 255, 0.015) 4px
+            )
+          `,
+          backgroundSize: '100% 100%, 100% 100%, 100% 100%, 100% 100%, 20px 20px, 20px 20px',
+          backgroundPosition: '0 0, 0 0, 0 0, 0 0, 0 0, 0 0'
+        }}
+      />
 
       {/* Regular section content when card is not active */}
       {!showCard && (
@@ -229,7 +258,7 @@ export default function LoveStorySection() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ 
               duration: 1.2, 
-              ease: [0.25, 0.1, 0.25, 1], // LiquidInk easing
+              ease: [0.25, 0.1, 0.25, 1],
               staggerChildren: 0.2 
             }}
           >
@@ -274,6 +303,7 @@ export default function LoveStorySection() {
               <StaggeredText 
                 text="Love Story" 
                 className="text-5xl md:text-5xl lg:text-6xl font-handwritten text-navy-800 tracking-widest-em uppercase"
+                once={false}
               />
             </motion.h2>
             
@@ -419,8 +449,8 @@ export default function LoveStorySection() {
           >
             {/* Single Card that changes content with dynamic layout */}
             <div
-              className={`backdrop-blur-md rounded-3xl shadow-2xl relative overflow-hidden border-2 border-dashed border-yellow-300 max-w-md w-full mx-4 bg-white/90 ${
-                storyEvents[currentCardIndex]?.imageLayout === 'side-by-side' ? 'flex p-0' : 'p-4 sm:p-6 md:p-8'
+              className={`backdrop-blur-md rounded-3xl shadow-2xl relative overflow-hidden border-2 border-dashed border-yellow-300 w-full bg-white/90 ${
+                storyEvents[currentCardIndex]?.imageLayout === 'side-by-side' ? 'flex p-0 max-w-4xl mx-2 md:max-w-2xl md:mx-4' : 'max-w-md p-4 sm:p-6 md:p-8 mx-4'
               }`}
               style={{
                 height: typeof window !== 'undefined' && window.innerWidth < 640 ? "425px" : "500px",
@@ -514,7 +544,11 @@ export default function LoveStorySection() {
                   </div>
 
                   {/* Image on the side - starts from description level and extends to bottom */}
-                  <div className="w-48 p-4 flex flex-col justify-start">
+                  <div className={`w-48 p-4 flex flex-col ${
+                    storyEvents[currentCardIndex]?.imagePosition === 'top' ? 'justify-start' :
+                    storyEvents[currentCardIndex]?.imagePosition === 'center' ? 'justify-center' :
+                    storyEvents[currentCardIndex]?.imagePosition === 'bottom' ? 'justify-end' : 'justify-start'
+                  }`}>
                     <motion.div 
                       className="relative w-full h-full min-h-80 rounded-2xl bg-gradient-to-br from-peach-200 to-oat-200 shadow-lg overflow-hidden flex items-center justify-center border-2 border-dashed border-yellow-300"
                       animate={{
@@ -530,7 +564,7 @@ export default function LoveStorySection() {
                       {storyEvents[currentCardIndex]?.doodleImage?.endsWith('.mp4') ? (
                         <video
                           src={storyEvents[currentCardIndex]?.doodleImage}
-                          className="max-w-full max-h-full object-contain rounded-xl"
+                          className="w-full h-full object-contain rounded-xl"
                           autoPlay
                           loop
                           muted
@@ -542,9 +576,10 @@ export default function LoveStorySection() {
                           alt={storyEvents[currentCardIndex]?.doodleAlt || "Love story moment"}
                           width={storyEvents[currentCardIndex]?.imageWidth || 300}
                           height={storyEvents[currentCardIndex]?.imageHeight || 200}
-                          className="max-w-full max-h-full object-contain rounded-xl"
-                          priority={currentCardIndex < 2}
+                          className="w-full h-full object-contain rounded-xl"
+                          priority={true}
                           loading="eager"
+                          unoptimized={false}
                         />
                       )}
                     </motion.div>
@@ -572,10 +607,10 @@ export default function LoveStorySection() {
 
                   {/* Image with dynamic positioning */}
                   <motion.div 
-                    className={`flex items-center justify-center ${
-                      storyEvents[currentCardIndex]?.imagePosition === 'top' ? 'mt-0' :
-                      storyEvents[currentCardIndex]?.imagePosition === 'center' ? 'mt-4' :
-                      storyEvents[currentCardIndex]?.imagePosition === 'bottom' ? 'mt-8' : 'mt-4'
+                    className={`flex items-end justify-center pb-2 ${
+                      storyEvents[currentCardIndex]?.imagePosition === 'top' ? 'items-start pt-2' :
+                      storyEvents[currentCardIndex]?.imagePosition === 'center' ? 'items-center' :
+                      storyEvents[currentCardIndex]?.imagePosition === 'bottom' ? 'items-end pb-2' : 'items-center'
                     }`}
                     animate={{
                       y: [0, -5, 0],
@@ -597,7 +632,7 @@ export default function LoveStorySection() {
                       {storyEvents[currentCardIndex]?.doodleImage?.endsWith('.mp4') ? (
                         <video
                           src={storyEvents[currentCardIndex]?.doodleImage}
-                          className="max-w-full max-h-full object-contain rounded-xl"
+                          className="w-full h-full object-contain rounded-xl"
                           autoPlay
                           loop
                           muted
@@ -609,9 +644,10 @@ export default function LoveStorySection() {
                           alt={storyEvents[currentCardIndex]?.doodleAlt || "Love story moment"}
                           width={storyEvents[currentCardIndex]?.imageWidth || 300}
                           height={storyEvents[currentCardIndex]?.imageHeight || 200}
-                          className="max-w-full max-h-full object-contain rounded-xl"
-                          priority={currentCardIndex < 2}
+                          className="w-full h-full object-contain rounded-xl"
+                          priority={true}
                           loading="eager"
+                          unoptimized={false}
                         />
                       )}
                     </div>
@@ -667,22 +703,6 @@ export default function LoveStorySection() {
           {/* Enhanced Floating Background Elements */}
           <FloatingDoodles />
 
-          {/* Subtle Paper/Fabric Texture */}
-          <div 
-            className="absolute inset-0 opacity-2 pointer-events-none"
-            style={{
-              backgroundImage: `
-                radial-gradient(circle at 20% 20%, rgba(139, 69, 19, 0.1) 0%, transparent 10%),
-                radial-gradient(circle at 80% 80%, rgba(160, 82, 45, 0.08) 0%, transparent 10%),
-                radial-gradient(circle at 40% 60%, rgba(139, 69, 19, 0.06) 0%, transparent 15%),
-                linear-gradient(45deg, transparent 40%, rgba(139, 69, 19, 0.03) 50%, transparent 25%),
-                linear-gradient(-45deg, transparent 30%, rgba(160, 82, 45, 0.04) 50%, transparent 30%)
-              `,
-              backgroundSize: '200px 200px, 300px 300px, 150px 150px, 100px 100px, 80px 80px',
-              backgroundPosition: '0 0, 50px 50px, 25px 25px, 0 0, 40px 40px',
-              backgroundRepeat: 'repeat'
-            }}
-          />
 
           {/* Decorative Divider - Top */}
           <div className="absolute top-0 left-0 right-0 h-1 flex justify-center items-center pointer-events-none">

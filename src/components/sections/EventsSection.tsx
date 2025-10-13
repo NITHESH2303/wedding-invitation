@@ -142,7 +142,7 @@ export default function EventsSection() {
                 </div>
                 <div className="space-y-3 text-sm leading-emotional">
                   <p className="font-bold text-navy-700 text-lg">November 23rd, 2025</p>
-                  <p className="text-navy-600">4:00 AM - 10:00 AM</p>
+                  <p className="text-navy-600">6:00 AM - 10:00 AM</p>
                   <p className="text-navy-600">Namakkal, Tamil Nadu</p>
                   <p className="text-navy-500 text-sm italic">
                     &ldquo;The moment we say &lsquo;I do&rsquo; and become one&rdquo;

@@ -221,7 +221,7 @@ export default function CoupleSection() {
                   <div className="space-y-3 text-sm leading-emotional">
                     <p className="text-navy-600 font-medium">The Bride</p>
                     <p className="text-navy-500 italic">
-                      &ldquo;Kind-hearted, adventurous, and always ready for the next big adventure. 
+                      &ldquo;Buffalo-hearted, adventurous, and always ready for the next big adventure. 
                       She brings joy and laughter wherever she goes.&rdquo;
                     </p>
                     <div className="flex justify-center gap-2 mt-4">

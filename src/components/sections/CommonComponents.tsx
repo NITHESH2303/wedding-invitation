@@ -131,17 +131,26 @@ export const CTAButton = ({
   href: string; 
   children: React.ReactNode; 
   className?: string; 
-}) => (
-  <motion.a
-    href={href}
-    className={`inline-block bg-gradient-to-r from-mint-300 to-gentle-300 text-navy-800 px-12 py-4 rounded-full text-xl font-handwritten uppercase tracking-widest-em transition-all duration-300 shadow-lg hover:shadow-xl transform -rotate-1 ${className}`}
-    whileHover={{
-      scale: 1.05,
-      y: -2,
-      rotate: 0
-    }}
-    whileTap={{ scale: 0.95 }}
-  >
-    {children}
-  </motion.a>
-);
+}) => {
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  return (
+    <motion.a
+      href={href}
+      onClick={handleClick}
+      className={`inline-block bg-gradient-to-r from-mint-300 to-gentle-300 text-navy-800 px-12 py-4 rounded-full text-xl font-handwritten uppercase tracking-widest-em transition-all duration-300 shadow-lg hover:shadow-xl transform -rotate-1 ${className}`}
+      whileHover={{
+        scale: 1.05,
+        y: -2,
+        rotate: 0
+      }}
+      whileTap={{ scale: 0.95 }}
+    >
+      {children}
+    </motion.a>
+  );
+};

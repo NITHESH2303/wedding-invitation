@@ -43,6 +43,10 @@ export default function HomePage() {
             <a
               href="#story"
               className="hover:text-navy-800 transition-colors relative group"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('story')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
             >
               Story
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-mint-300 transition-all duration-300 group-hover:w-full"></span>
@@ -50,6 +54,10 @@ export default function HomePage() {
             <a
               href="#events"
               className="hover:text-navy-800 transition-colors relative group"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('events')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
             >
               Events
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-mint-300 transition-all duration-300 group-hover:w-full"></span>
@@ -57,6 +65,10 @@ export default function HomePage() {
             <a
               href="#couple"
               className="hover:text-navy-800 transition-colors relative group"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('couple')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
             >
               Couple
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-mint-300 transition-all duration-300 group-hover:w-full"></span>
@@ -64,6 +76,10 @@ export default function HomePage() {
             <a
               href="#rsvp"
               className="hover:text-navy-800 transition-colors relative group"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('rsvp')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
             >
               RSVP
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-mint-300 transition-all duration-300 group-hover:w-full"></span>
@@ -71,6 +87,10 @@ export default function HomePage() {
             <a
               href="#venue"
               className="hover:text-navy-800 transition-colors relative group"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('venue')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
             >
               Venue
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-mint-300 transition-all duration-300 group-hover:w-full"></span>
@@ -98,21 +118,30 @@ export default function HomePage() {
           >
           <nav className="flex flex-col items-center space-y-6">
               {["Home", "Story", "Events", "Couple", "RSVP", "Venue"].map(
-                (item, index) => (
-                  <motion.a
-                    key={item}
-                    href={`#${item.toLowerCase()}`}
-                    className="text-2xl text-navy-800 font-semibold px-8 py-4 rounded-2xl bg-white/30 backdrop-blur-sm hover:bg-white/50 transition-all duration-300 shadow-lg"
-                    onClick={() => setIsMenuOpen(false)}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.6)" }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {item}
-                  </motion.a>
-                )
+                (item, index) => {
+                  const targetId = item.toLowerCase() === 'home' ? 'home' : item.toLowerCase();
+                  return (
+                    <motion.a
+                      key={item}
+                      href={`#${targetId}`}
+                      className="text-2xl text-navy-800 font-semibold px-8 py-4 rounded-2xl bg-white/30 backdrop-blur-sm hover:bg-white/50 transition-all duration-300 shadow-lg"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setIsMenuOpen(false);
+                        setTimeout(() => {
+                          document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 100);
+                      }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.6)" }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {item}
+                    </motion.a>
+                  );
+                }
               )}
           </nav>
           </motion.div>
