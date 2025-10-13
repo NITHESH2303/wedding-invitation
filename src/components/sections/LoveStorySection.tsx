@@ -159,7 +159,7 @@ export default function LoveStorySection() {
   useEffect(() => {
     const calculateDimensions = () => {
       const multiplier = window.innerWidth < 640 ? 1.8 : 2;
-      const bufferSpace = window.innerHeight * 0.35;
+      const bufferSpace = window.innerHeight * 0.3;
       const sectionHeight = (window.innerHeight * storyEvents.length * multiplier) + bufferSpace;
 
       setDimensions({

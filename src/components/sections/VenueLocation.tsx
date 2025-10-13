@@ -1,17 +1,27 @@
 import { motion } from "framer-motion";
+import StaggeredText from "@/components/StaggeredText";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function VenueLocation() {
   return (
     <section className="py-16 bg-gradient-to-br from-cream-100 to-peach-50">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-navy-800 mb-4">
-            Venue Location
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+        <ScrollReveal direction="up" className="text-center mb-12" once={false}>
+          <StaggeredText
+            text="VENUE LOCATION"
+            className="text-4xl md:text-5xl font-handwritten text-navy-800 mb-8 tracking-widest-em uppercase transform -rotate-1"
+            direction="up"
+            once={false}
+          />
+          <motion.p
+            className="text-xl text-navy-600 max-w-2xl mx-auto leading-emotional font-script"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
             Join us at our beautiful venue for the celebration of a lifetime
-          </p>
-        </div>
+          </motion.p>
+        </ScrollReveal>
 
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden mb-8">
           <iframe
