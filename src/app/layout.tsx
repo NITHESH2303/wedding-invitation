@@ -41,7 +41,7 @@ export const metadata: Metadata = {
         alt: "Boobana & Giri - Wedding Celebration",
       },
     ],
-    creator: "@boobana_giri",
+    creator: "@Nithesh_2303",
   },
   robots: {
     index: true,

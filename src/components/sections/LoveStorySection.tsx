@@ -158,8 +158,8 @@ export default function LoveStorySection() {
 
   useEffect(() => {
     const calculateDimensions = () => {
-      const multiplier = window.innerWidth < 640 ? 1.2 : 1.4;
-      const bufferSpace = window.innerHeight * 0.15;
+      const multiplier = window.innerWidth < 640 ? 0.8 : 1.0;
+      const bufferSpace = window.innerHeight * 0.03;
       const sectionHeight = (window.innerHeight * storyEvents.length * multiplier) + bufferSpace;
 
       setDimensions({
@@ -185,11 +185,11 @@ export default function LoveStorySection() {
 
   useEffect(() => {
     const unsubscribe = scrollYProgress.on("change", (progress) => {
-      const shouldShow = progress > 0.07 && progress < 0.90;
+      const shouldShow = progress > 0.07 && progress < 0.80;
       setShowCard(shouldShow);
 
-      const activeStart = 0.09;
-      const activeEnd = 0.80;
+      const activeStart = 0.10;
+      const activeEnd = 0.70;
       const activeRange = activeEnd - activeStart;
       const adjustedProgress = Math.max(0, Math.min(1, (progress - activeStart) / activeRange));
       const cardProgress = adjustedProgress * storyEvents.length;
