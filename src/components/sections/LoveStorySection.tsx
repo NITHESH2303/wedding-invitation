@@ -158,8 +158,8 @@ export default function LoveStorySection() {
 
   useEffect(() => {
     const calculateDimensions = () => {
-      const multiplier = window.innerWidth < 640 ? 1.8 : 2;
-      const bufferSpace = window.innerHeight * 0.3;
+      const multiplier = window.innerWidth < 640 ? 1.2 : 1.4;
+      const bufferSpace = window.innerHeight * 0.15;
       const sectionHeight = (window.innerHeight * storyEvents.length * multiplier) + bufferSpace;
 
       setDimensions({
@@ -170,7 +170,7 @@ export default function LoveStorySection() {
     calculateDimensions();
     window.addEventListener('resize', calculateDimensions);
     return () => window.removeEventListener('resize', calculateDimensions);
-  }, []);
+  }, []); 
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -188,8 +188,8 @@ export default function LoveStorySection() {
       const shouldShow = progress > 0.07 && progress < 0.90;
       setShowCard(shouldShow);
 
-      const activeStart = 0.07;
-      const activeEnd = 0.90;
+      const activeStart = 0.09;
+      const activeEnd = 0.80;
       const activeRange = activeEnd - activeStart;
       const adjustedProgress = Math.max(0, Math.min(1, (progress - activeStart) / activeRange));
       const cardProgress = adjustedProgress * storyEvents.length;
